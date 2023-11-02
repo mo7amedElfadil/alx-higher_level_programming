@@ -4,7 +4,6 @@
 def my_calc(av):
     from calculator_1 import add, sub, mul, div
     ac = len(av[1:])
-    print(ac)
     if ac != 3:
         print(f"Usage: {av[0]} <a> <operator> <b>")
         exit(1)
