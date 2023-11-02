@@ -13,7 +13,7 @@ def my_calc(av):
     b = int(av[3])
     c = {"+": add, "-": sub, "*": mul, "/": div}
     try:
-        print("{} {} {} = {}".format(a, o, b, c[o](a, b)))
+        print("{:d} {:s} {:d} = {:d}".format(a, o, b, c[o](a, b)))
     except KeyError:
         print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
