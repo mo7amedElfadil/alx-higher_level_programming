@@ -11,7 +11,7 @@ def my_calc(av):
     a = int(av[1])
     o = av[2]
     b = int(av[3])
-    c = {"+" : add, "-" : sub, "*" : mul, "/" : div}
+    c = {"+": add, "-": sub, "*": mul, "/": div}
     try:
         print("{} {} {} = {}".format(a, o, b, c[o](a, b)))
     except KeyError:
@@ -22,4 +22,3 @@ def my_calc(av):
 if __name__ == "__main__":
     import sys
     my_calc(sys.argv)
-
