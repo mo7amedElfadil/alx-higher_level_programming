@@ -1,6 +1,6 @@
-#include <Python-3.4.4/Include/Python.h>
-#include <Python-3.4.4/Include/listobject.h>
-#include <Python-3.4.4/Include/object.h>
+#include <Python.h>
+#include <listobject.h>
+#include <object.h>
 /**
  * print_python_list_info - prints the basic info of a python list object
  * @p: pyObject
@@ -8,7 +8,6 @@
 void print_python_list_info(PyObject *p)
 {
 	Py_ssize_t size, i = 0;
-	PyTypeObject *type = p->ob_type;
 
 	if (!PyList_CheckExact(p))
 		return;
