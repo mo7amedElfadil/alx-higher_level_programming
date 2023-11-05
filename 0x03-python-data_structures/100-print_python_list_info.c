@@ -1,6 +1,6 @@
-#include <python3.10/Python.h>
-#include <python3.10/listobject.h>
-#include <python3.10/object.h>
+#include <python3.4/Python.h>
+#include <python3.4/listobject.h>
+#include <python3.4/object.h>
 /**
  * print_python_list_info - prints the basic info of a python list object
  * @p: pyObject
