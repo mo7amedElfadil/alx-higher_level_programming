@@ -3,6 +3,7 @@
 !/*.c
 !/.gitignore
 !/*.h
+!/libPyList.so
 !/README.md
 *main.py
 
