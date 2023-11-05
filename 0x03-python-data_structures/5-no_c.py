@@ -5,7 +5,7 @@ def c_tenary(C=(), c=""):
 
 def no_c(my_string):
     C = ['c', 'C']
-    while c_tenary(C, my_string) != -1:
+    while my_string and c_tenary(C, my_string) != -1:
         my_string = (my_string[:c_tenary(C, my_string)] +
                      my_string[c_tenary(C, my_string) + 1:])
-        return my_string
+    return my_string
