@@ -24,7 +24,12 @@ void print_python_bytes(PyObject *p)
 	printf("  trying string: %s\n", byte_string);
 	printf("  first %zu bytes: ", len);
 	for (i = 0; i < len; i++)
-		printf("%02hx ", (unsigned int)(byte_string[i] & 0xFF));
+	{
+		printf("%02hx", (unsigned int)(byte_string[i] & 0xFF));
+		if (i < len - 1)
+			printf(" ");
+	}
+
 	printf("\n");
 
 }
