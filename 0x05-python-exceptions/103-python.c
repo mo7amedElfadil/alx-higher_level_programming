@@ -1,4 +1,5 @@
 #include <Python.h>
+#include <math.h>
 /**
  * print_python_bytes- prints the basic info of a python bytes object
  * @p: pyObject
@@ -34,9 +35,27 @@ void print_python_bytes(PyObject *p)
 	fflush(stdout);
 }
 
+int getDecimalPlaces(double value) {
+    if (value == 0.0) {
+        return 0;
+    }
+
+    double absValue = fabs(value);
+    double integralPart;
+    double fractionalPart = modf(absValue, &integralPart);
+
+    int decimalPlaces = 0;
+    while (fractionalPart > 0.0 && decimalPlaces < 15) {
+        fractionalPart *= 10.0;
+        fractionalPart = modf(fractionalPart, &integralPart);
+        decimalPlaces++;
+    }
+
+    return decimalPlaces;
+}
 
 /**
- * print_python_list- prints the basic info of a python list object
+ * print_python_float - prints the value of a python float object
  * @p: pyObject
  */
 void print_python_float(PyObject *p)
@@ -48,8 +67,12 @@ void print_python_float(PyObject *p)
 	}
 	printf("[.] float object info\n");
 	PyFloatObject *floatObj = (PyFloatObject *)p;
-
-	printf("  value: %.16g\n", floatObj->ob_fval);	fflush(stdout);
+	int pre = getDecimalPlaces(floatObj->ob_fval);
+	if (!pre)
+		printf("  value: %0.1f\n", floatObj->ob_fval);
+	else
+		printf("  value: %0.*g\n", 16, floatObj->ob_fval);
+	fflush(stdout);
 }
 
 /**
