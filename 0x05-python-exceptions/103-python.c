@@ -1,5 +1,9 @@
 #include <Python.h>
 #include <math.h>
+void print_python_float(PyObject *p);
+void print_python_bytes(PyObject *p);
+void print_python_list(PyObject *p);
+
 /**
  * print_python_bytes- prints the basic info of a python bytes object
  * @p: pyObject
@@ -18,7 +22,7 @@ void print_python_bytes(PyObject *p)
 		return;
 	}
 	PyBytesObject *bytesObj = (PyBytesObject *)p;
-	size = ((PyVarObject *)p)->ob_size;
+	size = bytesObj->ob_base.ob_size;
 	if (size > 10)
 		len = 10;
 	else
@@ -68,7 +72,7 @@ void print_python_list(PyObject *p)
 
 	fflush(stdout);
 	printf("[*] Python list info\n");
-	if (!PyList_CheckExact(p))
+	if (!PyList_Check(p))
 	{
 		printf("  [ERROR] Invalid List Object\n");
 		fflush(stdout);
