@@ -13,6 +13,7 @@ void print_python_bytes(PyObject *p)
 	if (!PyBytes_Check(p))
 	{
 		printf("  [ERROR] Invalid Bytes Object\n");
+		fflush(stdout);
 		return;
 	}
 	PyBytesObject *bytesObj = (PyBytesObject *)p;
@@ -64,6 +65,7 @@ void print_python_float(PyObject *p)
 	if (!PyFloat_Check(p))
 	{
 		printf("  [ERROR] Invalid Float Object\n");
+		fflush(stdout);
 		return;
 	}
 	PyFloatObject *floatObj = (PyFloatObject *)p;
@@ -88,6 +90,7 @@ void print_python_list(PyObject *p)
 	if (!PyList_CheckExact(p))
 	{
 		printf("  [ERROR] Invalid List Object\n");
+		fflush(stdout);
 		return;
 	}
 
