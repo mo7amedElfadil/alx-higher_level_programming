@@ -9,6 +9,7 @@ void print_python_bytes(PyObject *p)
 {
 	Py_ssize_t size = 0, len, i;
 
+	fflush(stdout);
 	printf("[.] bytes object info\n");
 	if (!PyBytes_Check(p))
 	{
@@ -61,6 +62,7 @@ int getDecimalPlaces(double value) {
  */
 void print_python_float(PyObject *p)
 {
+	fflush(stdout);
 	printf("[.] float object info\n");
 	if (!PyFloat_Check(p))
 	{
@@ -86,6 +88,7 @@ void print_python_list(PyObject *p)
 	Py_ssize_t size, i = 0;
 
 
+	fflush(stdout);
 	printf("[*] Python list info\n");
 	if (!PyList_CheckExact(p))
 	{
