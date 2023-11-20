@@ -36,26 +36,6 @@ void print_python_bytes(PyObject *p)
 	printf("\n");
 	fflush(stdout);
 }
-
-int getDecimalPlaces(double value) {
-    if (value == 0.0) {
-        return 0;
-    }
-
-    double absValue = fabs(value);
-    double integralPart;
-    double fractionalPart = modf(absValue, &integralPart);
-
-    int decimalPlaces = 0;
-    while (fractionalPart > 0.0 && decimalPlaces < 15) {
-        fractionalPart *= 10.0;
-        fractionalPart = modf(fractionalPart, &integralPart);
-        decimalPlaces++;
-    }
-
-    return decimalPlaces;
-}
-
 /**
  * print_python_float - prints the value of a python float object
  * @p: pyObject
@@ -71,14 +51,9 @@ void print_python_float(PyObject *p)
 		return;
 	}
 	PyFloatObject *floatObj = (PyFloatObject *)p;
-	/* int pre = getDecimalPlaces(floatObj->ob_fval); */
 	char *double_str = PyOS_double_to_string(floatObj->ob_fval, 'r', 0,
 			Py_DTSF_ADD_DOT_0, Py_DTST_FINITE);
 	printf("  value: %s\n", double_str);
-	/* if (!pre) */
-	/* 	printf("  value: %0.1f\n", floatObj->ob_fval); */
-	/* else */
-	/* 	printf("  value: %0.*g\n", pre + 1, floatObj->ob_fval); */
 	fflush(stdout);
 }
 
