@@ -2,12 +2,13 @@
 def safe_print_list(my_list=[], x=0):
     i = 0
     try:
-        for i, e in enumerate(my_list):
+        for e in my_list:
             if i == x:
                 i -= 1
                 break
+            i += 1
             print(e, end="")
         print()
     except Exception:
         return i
-    return i + 1
+    return i
