@@ -60,12 +60,12 @@ int getDecimalPlaces(double value) {
  */
 void print_python_float(PyObject *p)
 {
+	printf("[.] float object info\n");
 	if (!PyFloat_Check(p))
 	{
 		printf("  [ERROR] Invalid Float Object\n");
 		return;
 	}
-	printf("[.] float object info\n");
 	PyFloatObject *floatObj = (PyFloatObject *)p;
 	int pre = getDecimalPlaces(floatObj->ob_fval);
 	if (!pre)
