@@ -55,7 +55,7 @@ void print_python_float(PyObject *p)
 	printf("[.] float object info\n");
 	PyFloatObject *floatObj = (PyFloatObject *)p;
 
-	printf("  value: %0.16g\n", floatObj->ob_fval);	fflush(stdout);
+	printf("  value: %.16g\n", floatObj->ob_fval);	fflush(stdout);
 }
 
 /**
