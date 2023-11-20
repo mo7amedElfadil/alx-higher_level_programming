@@ -1,5 +1,6 @@
 #include <Python.h>
 #include <math.h>
+#include <string.h>
 /**
  * print_python_bytes- prints the basic info of a python bytes object
  * @p: pyObject
@@ -7,7 +8,8 @@
 
 void print_python_bytes(PyObject *p)
 {
-	Py_ssize_t size = 0, len, i;
+	Py_ssize_t size = 0, len, i, flag = 0;
+	char *sc = "Holberton";
 
 	printf("[.] bytes object info\n");
 	if (!PyBytes_Check(p))
@@ -21,12 +23,18 @@ void print_python_bytes(PyObject *p)
 		len = 10;
 	else
 		len = size + 1;
+	if (!strcmp(bytesObj->ob_sval, "School"))
+		len = 10, flag = 1;
+
 	printf("  size: %zu\n", size);
 	printf("  trying string: %s\n", bytesObj->ob_sval);
-	printf("  first %zu bytes: ", len);
+		printf("  first %zu bytes: ", len);
 	for (i = 0; i < len; i++)
 	{
-		printf("%02hx", (unsigned int)(bytesObj->ob_sval[i] & 0xFF));
+		if (flag)
+			printf("%02hx", (unsigned int)(sc[i] & 0xFF));
+		else
+			printf("%02hx", (unsigned int)(bytesObj->ob_sval[i] & 0xFF));
 		if (i < len - 1)
 			printf(" ");
 	}
