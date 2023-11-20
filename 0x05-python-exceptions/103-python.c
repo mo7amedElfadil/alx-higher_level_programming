@@ -18,7 +18,7 @@ void print_python_bytes(PyObject *p)
 		return;
 	}
 	PyBytesObject *bytesObj = (PyBytesObject *)p;
-	size = bytesObj->ob_base.ob_size;
+	size = ((PyVarObject *)p)->ob_size;
 	if (size > 10)
 		len = 10;
 	else
