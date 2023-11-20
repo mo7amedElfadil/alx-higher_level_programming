@@ -71,7 +71,7 @@ void print_python_float(PyObject *p)
 	if (!pre)
 		printf("  value: %0.1f\n", floatObj->ob_fval);
 	else
-		printf("  value: %0.*g\n", 16, floatObj->ob_fval);
+		printf("  value: %0.*g\n", pre + 1, floatObj->ob_fval);
 	fflush(stdout);
 }
 
