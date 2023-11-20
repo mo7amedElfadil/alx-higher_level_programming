@@ -1,10 +1,4 @@
 #include <python3.10/Python.h>
-#include <python3.10/listobject.h>
-#include <python3.10/object.h>
-#include <python3.10/floatobject.h>
-#include <python3.10/bytesobject.h>
-#include <stdio.h>
-#include <math.h>
 /**
  * print_python_bytes- prints the basic info of a python bytes object
  * @p: pyObject
