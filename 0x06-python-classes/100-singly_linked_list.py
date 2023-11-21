@@ -101,12 +101,12 @@ class SinglyLinkedList:
         new = Node(val)
         if not self.__head:
             self.__head = new
-        elif self.__head.data >= val:
+        elif self.__head.data > val:
             new.next_node = self.__head
             self.__head = new
         else:
             cur = self.__head
-            while cur.next_node and cur.next_node.data <= new.data:
+            while cur.next_node and cur.next_node.data < new.data:
                 cur = cur.next_node
             new.next_node = cur.next_node
             cur.next_node = new
