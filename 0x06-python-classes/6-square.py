@@ -83,15 +83,30 @@ class Square():
         """Public instance method that returns instance square area"""
         return self.__size ** 2
 
+    # def my_print(self):
+    #     """Public instance method that prints
+    #         a size x size square using '#' characters
+    #             if size == 0 just prints a newline
+    #         Offsets square by value of position
+    #     """
+    #     if (self.__size == 0):
+    #         print()
+    #         return
+    #     print("\n"*self.__position[1], end="")
+    #     for _ in range(self.__size):
+    #         print(" "*self.__position[0] + "#"*self.__size)
+
     def my_print(self):
-        """Public instance method that prints
-            a size x size square using '#' characters
-                if size == 0 just prints a newline
-            Offsets square by value of position
-        """
-        if (self.__size == 0):
+        """Print the sqaure."""
+
+        if (not self.__size):
             print()
             return
-        print("\n"*self.__position[1], end="")
+        for _ in range(self.__position[1]):
+            print()
         for _ in range(self.__size):
-            print(" "*self.__position[0] + "#"*self.__size)
+            for _ in range((self.__position[0])):
+                print(' ', end='')
+            for _ in range(self.__size):
+                print('#', end='')
+            print()
