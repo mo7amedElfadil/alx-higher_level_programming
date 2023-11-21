@@ -1,0 +1,9 @@
+*
+!/*.py
+!/*.c
+!/.gitignore
+!/*.h
+!/*.so
+!/README.md
+*main.py
+
