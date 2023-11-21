@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """Define square class"""
+
+
 class Square():
     """definition of Square class
 
@@ -16,8 +18,8 @@ class Square():
             if value meets the requirements mentioned in method doc.
 
         """
-    def __init__(self, size = 0):
-        """Function to initialize instance of Square with Optional 
+    def __init__(self, size=0):
+        """Function to initialize instance of Square with Optional
         attribute size(defaults to 0).
 
         """
@@ -31,7 +33,7 @@ class Square():
     @size.setter
     def size(self, value):
         """setter for size property
-             if size < 0 --> raise ValueError with 
+             if size < 0 --> raise ValueError with
             msg : size must be >= 0.
             if size is not integer --> raise TypeError with
             msg : size must be an integer.
@@ -42,7 +44,6 @@ class Square():
         if value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
-
 
     def area(self):
         """Public instance method that returns instance square area"""

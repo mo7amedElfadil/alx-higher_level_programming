@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 # 1-square.py
 """ Define a class square with a private attribute size."""
+
+
 class Square():
     """ definition of square class
 
