@@ -63,50 +63,51 @@ class Square():
         """getter for position property"""
         return self.__position
 
-    @position.setter
-    def position(self, value):
-        """setter for size property
-             if size < 0 --> raise ValueError with
-            msg : size must be >= 0.
-            if size is not integer --> raise TypeError with
-            msg : size must be an integer.
+#     @position.setter
+#     def position(self, value):
+#         """setter for size property
+#              if size < 0 --> raise ValueError with
+#             msg : size must be >= 0.
+#             if size is not integer --> raise TypeError with
+#             msg : size must be an integer.
 
-        """
-        if (not isinstance(value, tuple) or
-                len(value) != 2 or
-                not all(isinstance(v, int) for v in value) or
-                not all(v >= 0 for v in value)):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        self.__position = value
+#         """
+#         if (not isinstance(value, tuple) or
+#                 len(value) != 2 or
+#                 not all(isinstance(v, int) for v in value) or
+#                 not all(v >= 0 for v in value)):
+#             raise TypeError("position must be a tuple of 2 positive integers")
+#         self.__position = value
+
+    @position.setter
+    def position(self, position):
+        """Set position."""
+        if not position or not isinstance(position, tuple):
+            raise TypeError('position must be a tuple of 2 positive integers')
+        _len = len(position)
+        if (not _len or _len != 2):
+            raise TypeError('position must be a tuple of 2 positive integers')
+        x, y = position
+        if not isinstance(x, int) or not isinstance(y, int) or x < 0 or y < 0:
+            raise TypeError('position must be a tuple of 2 positive integers')
+        self.__position = position
+
+
+
 
     def area(self):
         """Public instance method that returns instance square area"""
         return self.__size ** 2
 
-    # def my_print(self):
-    #     """Public instance method that prints
-    #         a size x size square using '#' characters
-    #             if size == 0 just prints a newline
-    #         Offsets square by value of position
-    #     """
-    #     if (self.__size == 0):
-    #         print()
-    #         return
-    #     print("\n"*self.__position[1], end="")
-    #     for _ in range(self.__size):
-    #         print(" "*self.__position[0] + "#"*self.__size)
-
     def my_print(self):
-        """Print the sqaure."""
-
-        if (not self.__size):
+        """Public instance method that prints
+            a size x size square using '#' characters
+                if size == 0 just prints a newline
+            Offsets square by value of position
+        """
+        if (self.__size == 0):
             print()
             return
-        for _ in range(self.__position[1]):
-            print()
+        print("\n"*self.__position[1], end="")
         for _ in range(self.__size):
-            for _ in range((self.__position[0])):
-                print(' ', end='')
-            for _ in range(self.__size):
-                print('#', end='')
-            print()
+            print(" "*self.__position[0] + "#"*self.__size)
