@@ -23,11 +23,11 @@ void print_python_bytes(PyObject *p)
 	}
 	PyBytesObject *bytesObj = (PyBytesObject *)p;
 	size = bytesObj->ob_base.ob_size;
-	if (size > 10)
+	printf("  size: %zu\n", size);
+	if (size >= 10)
 		len = 10;
 	else
 		len = size + 1;
-	printf("  size: %zu\n", size);
 	printf("  trying string: %s\n", bytesObj->ob_sval);
 	printf("  first %zu bytes: ", len);
 	for (i = 0; i < len; i++)
