@@ -1,6 +1,7 @@
 #!/usr/bin/python3.8
-import math
 """Define MagicClass class"""
+
+import math
 
 
 class MagicClass:
@@ -21,7 +22,8 @@ class MagicClass:
             radius (int, private): radius of circle, 0 by default.
 
         """
-        if type(radius) is not int or type(radius) is not float:
+        self.__radius = 0
+        if (type(radius) is not int and type(radius) is not float):
             raise TypeError('radius must be a number')
         self.__radius = radius
 
