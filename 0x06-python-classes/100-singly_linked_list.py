@@ -42,7 +42,7 @@ class Node:
         msg : data must be an integer
         """
         if not isinstance(value, int):
-            raise TypeError(" data must be an integer")
+            raise TypeError("data must be an integer")
         self.__data = value
 
     @property
