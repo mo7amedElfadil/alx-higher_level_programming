@@ -104,15 +104,9 @@ class SinglyLinkedList:
             self.__head = Node(val, self.__head)
         else:
             self.recursive_add(val, self.__head)
-            # cur = self.__head
-            # while cur.next_node and cur.next_node.data < val:
-            #     cur = cur.next_node
-            # cur.next_node = Node(val, cur.next_node)
 
     def recursive_add(self, val, node):
         if node.next_node and node.next_node.data < val:
             self.recursive_add(val, node.next_node)
         else:
             node.next_node = Node(val, node.next_node)
-
-
