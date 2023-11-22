@@ -98,15 +98,21 @@ class SinglyLinkedList:
         """Public method that inserts a new Node into the correct
         sorted position in the list
         """
-        new = Node(val)
         if not self.__head:
-            self.__head = new
+            self.__head = Node(val, self.__head)
         elif self.__head.data > val:
-            new.next_node = self.__head
-            self.__head = new
+            self.__head = Node(val, self.__head)
         else:
-            cur = self.__head
-            while cur.next_node and cur.next_node.data < new.data:
-                cur = cur.next_node
-            new.next_node = cur.next_node
-            cur.next_node = new
+            self.recursive_add(val, self.__head)
+            # cur = self.__head
+            # while cur.next_node and cur.next_node.data < val:
+            #     cur = cur.next_node
+            # cur.next_node = Node(val, cur.next_node)
+
+    def recursive_add(self, val, node):
+        if node.next_node and node.next_node.data < val:
+            self.recursive_add(val, node.next_node)
+        else:
+            node.next_node = Node(val, node.next_node)
+
+
