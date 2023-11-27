@@ -98,9 +98,7 @@ class SinglyLinkedList:
         """Public method that inserts a new Node into the correct
         sorted position in the list
         """
-        if not self.__head:
-            self.__head = Node(val, self.__head)
-        elif self.__head.data > val:
+        if not self.__head or self.__head.data > val:
             self.__head = Node(val, self.__head)
         else:
             self.recursive_add(val, self.__head)
