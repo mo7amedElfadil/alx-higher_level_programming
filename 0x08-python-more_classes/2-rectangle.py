@@ -12,6 +12,8 @@ class Rectangle:
         width (int, private): width of Rectangle, 0 by default.
         height (int, private): height of Rectangle, 0 by default.
     Methods:
+        area (Public): returns area (int) of the instance Rectangle
+        perimeter (Public): returns perimeter (int) of the instance Rectangle
         width: property setter and getter
         height: property setter and getter
             Args:
@@ -68,3 +70,11 @@ class Rectangle:
         elif value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        if 0 in [self.width, self.height]:
+            return 0
+        return 2 * (self.width + self.height)
