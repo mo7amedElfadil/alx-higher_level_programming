@@ -1,0 +1,86 @@
+The ``4-print_square`` module
+======================
+
+Using ``print_square``
+-------------------
+
+Importing the function from the module:
+	>>> print_square = __import__("4-print_square").print_square
+
+Checking for module docstring:
+	>>> mod_doc = __import__("4-print_square").__doc__
+	>>> len(mod_doc) > 2
+	True
+
+Checking for function docstring:
+	>>> fun_doc = __import__("4-print_square").print_square.__doc__
+	>>> len(fun_doc) > 2
+	True
+
+Checking for wrong input:
+Testing no args:
+	>>> print_square()
+	Traceback (most recent call last):
+		...
+	TypeError: print_square() missing 1 required positional argument: 'size'
+
+Testing size isn't defined:
+	>>> print_square(size) 
+	Traceback (most recent call last):
+        ...
+	NameError: name 'size' is not defined
+
+Testing with negative size
+    >>> print_square(-1)
+    Traceback (most recent call last):
+        ...
+    ValueError: size must be >= 0
+
+Testing when size is a float
+    >>> print_square(1.0)
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+Testing when size is a str (none int)
+    >>> print_square('3')
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+Testing size with bool:
+	>>> print_square(False)
+	Traceback (most recent call last):
+		...
+	TypeError: size must be an integer
+
+Testing with no args
+    >>> print_square()
+    Traceback (most recent call last):
+        ...
+    TypeError: print_square() missing 1 required positional argument: 'size'
+
+Testing with more than 1 arg
+    >>> print_square(3, 56)
+    Traceback (most recent call last):
+        ...
+    TypeError: print_square() takes 1 positional argument but 2 were given
+
+Testing when size is None
+    >>> print_square(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+Checking for correct arguments:   
+Testing execution with correct arguments
+    >>> print_square(3)
+    ###
+    ###
+    ###
+
+Testing with size 0
+    >>> print_square(0)
+    <BLANKLINE>
+
+ 

@@ -1,0 +1,109 @@
+The ``2-matrix_divided`` module
+======================
+
+Using ``matrix_divided``
+-------------------
+
+Importing the function from the module:
+	>>> matrix_divided = __import__("2-matrix_divided").matrix_divided
+
+Checking for module docstring:
+	>>> mod_doc = __import__("2-matrix_divided").__doc__
+	>>> len(mod_doc) > 2
+	True
+
+Checking for function docstring:
+	>>> fun_doc = __import__("2-matrix_divided").matrix_divided.__doc__
+	>>> len(fun_doc) > 2
+	True
+
+Checking for wrong input:
+Testing printing return value of matrix_divided when matrix isn't defined:
+	>>> print(matrix_divided(matrix, 3)) 
+	Traceback (most recent call last):
+        ...
+	NameError: name 'matrix' is not defined
+
+Testing when div is a char:
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> print(matrix_divided(matrix, '3'))
+    Traceback (most recent call last):
+        ...
+    TypeError: div must be a number
+
+Testing when matrix rows aren't the same size:
+    >>> matrix = [[1, 2, 3], [4, 5]]
+    >>> print(matrix_divided(matrix, 3))
+    Traceback (most recent call last):
+        ...
+    TypeError: Each row of the matrix must have the same size
+
+Testing when matrix is none:
+	>>> matrix_divided(None, 3)
+	Traceback (most recent call last):
+		...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+
+Testing when matrix is int:
+	>>> print(matrix_divided(2, 3))
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Testing print matrix_divided when params are correct:
+	>>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> print(matrix_divided(matrix, 3))
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+Checking for multiple executions:
+	>>> a = [[e for e in range(1,5)] for x in range(1,5)]
+	>>> print([matrix_divided(a, b) for b in  range(1,5)])
+	[[[1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0], [1.0, 2.0, 3.0, 4.0]], [[0.5, 1.0, 1.5, 2.0], [0.5, 1.0, 1.5, 2.0], [0.5, 1.0, 1.5, 2.0], [0.5, 1.0, 1.5, 2.0]], [[0.33, 0.67, 1.0, 1.33], [0.33, 0.67, 1.0, 1.33], [0.33, 0.67, 1.0, 1.33], [0.33, 0.67, 1.0, 1.33]], [[0.25, 0.5, 0.75, 1.0], [0.25, 0.5, 0.75, 1.0], [0.25, 0.5, 0.75, 1.0], [0.25, 0.5, 0.75, 1.0]]]
+
+Checking super long int:
+	>>> matrix = [[1.000000e+37, 1.000000e+37, 1.000000e+37],[1.000000e+37, 1.000000e+37, 1.000000e+37]]
+	>>> print(matrix_divided(matrix, 5))
+	[[1.9999999999999998e+36, 1.9999999999999998e+36, 1.9999999999999998e+36], [1.9999999999999998e+36, 1.9999999999999998e+36, 1.9999999999999998e+36]]
+
+Checking for passed NaN:
+	>>> matrix = [[1, 2, 3],[4, 5, 6]]
+	>>> print(matrix_divided(matrix, float('nan')))
+	[[nan, nan, nan], [nan, nan, nan]]
+
+Checking for passed inf:
+	>>> matrix = [[1, 2, 3],[4, 5, 6]]
+	>>> print(matrix_divided(matrix, float('inf')))
+	[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
+Checking non-number with non-number:
+	>>> print(matrix_divided((5,4), {"k": "v"}))
+	Traceback (most recent call last):
+		...
+	TypeError: div must be a number
+
+Checking number with bool:
+	>>> matrix_divided(0, False)
+	Traceback (most recent call last):
+		...
+	TypeError: div must be a number
+
+Checking no args:
+	>>> matrix_divided()
+	Traceback (most recent call last):
+		...
+	TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+Checking one arg:
+	>>> matrix_divided(matrix)
+	Traceback (most recent call last):
+		...
+	TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+Checking more than 2 args:
+	>>> matrix = [[1, 2, 3],[4, 5, 6]]
+	>>> matrix_divided(matrix, 2, 3)
+	Traceback (most recent call last):
+		...
+	TypeError: matrix_divided() takes 2 positional arguments but 3 were given
+

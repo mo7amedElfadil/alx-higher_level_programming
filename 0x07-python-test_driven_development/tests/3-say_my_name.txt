@@ -1,0 +1,86 @@
+The ``3-say_my_name`` module
+======================
+
+Using ``say_my_name``
+-------------------
+
+Importing the function from the module:
+	>>> say_my_name = __import__("3-say_my_name").say_my_name
+
+Checking for module docstring:
+	>>> mod_doc = __import__("3-say_my_name").__doc__
+	>>> len(mod_doc) > 2
+	True
+
+Checking for function docstring:
+	>>> fun_doc = __import__("3-say_my_name").say_my_name.__doc__
+	>>> len(fun_doc) > 2
+	True
+
+Checking for wrong input:
+Testing no args:
+	>>> say_my_name()
+	Traceback (most recent call last):
+		...
+	TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+
+Testing first_name isn't defined:
+	>>> say_my_name(first_name) 
+	Traceback (most recent call last):
+        ...
+	NameError: name 'first_name' is not defined
+
+Testing when first name is an int (none str):
+    >>> say_my_name(12, "Smith")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+Testing when last name is an int (none str):
+    >>> say_my_name("John", 12)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+Testing when first name is none
+    >>> say_my_name(None, "Bob")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+Testing first_name with bool:
+	>>> say_my_name(False)
+	Traceback (most recent call last):
+		...
+	TypeError: first_name must be a string
+
+Testing more than 2 args:
+	>>> say_my_name("Mohamed", "Elfadil", "Abdalla")
+	Traceback (most recent call last):
+		...
+	TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
+
+Testing when first name is char:
+	>>> say_my_name(chr(74), "Bob")
+	My name is J Bob
+
+Testing with one argument is passed
+    >>> say_my_name("John")
+    My name is John 
+
+Checking for correct arguments:   
+Testing execution with correct arguments
+    >>> say_my_name("John", "Smith")
+    My name is John Smith
+
+Checking for multiple executions:
+	>>> f_names = ["Mohamed", "Abdalla", "Reduoane", "Reem", "Deborah"]
+	>>> l_names = ["Mohamed", "Abdalla", "Reduoane", "Reem", "Deborah"]
+	>>> [say_my_name(f, l) for f, l in zip(f_names, l_names)]
+	My name is Mohamed Mohamed
+	My name is Abdalla Abdalla
+	My name is Reduoane Reduoane
+	My name is Reem Reem
+	My name is Deborah Deborah
+	[None, None, None, None, None]

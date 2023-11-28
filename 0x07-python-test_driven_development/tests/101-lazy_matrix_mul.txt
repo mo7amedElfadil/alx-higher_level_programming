@@ -1,0 +1,89 @@
+The ``101-lazy_lazy_matrix_mul`` module
+======================
+
+Using ``lazy_matrix_mul``
+-------------------
+
+Importing the function from the module:
+	>>> lazy_matrix_mul = __import__("101-lazy_matrix_mul").lazy_matrix_mul
+
+Checking for module docstring:
+	>>> mod_doc = __import__("101-lazy_matrix_mul").__doc__
+	>>> len(mod_doc) > 2
+	True
+
+Checking for function docstring:
+	>>> fun_doc = __import__("101-lazy_matrix_mul").lazy_matrix_mul.__doc__
+	>>> len(fun_doc) > 2
+	True
+
+Checking for wrong input:
+Testing no args:
+	>>> lazy_matrix_mul()
+	Traceback (most recent call last):
+		...
+	TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+Testing size isn't defined:
+	>>> lazy_matrix_mul(m_a, m_b)
+	Traceback (most recent call last):
+        ...
+	NameError: name 'm_a' is not defined
+
+Testing with 2 non lists
+    >>> lazy_matrix_mul(1, 2)
+    2
+
+Testing with 2  lists that aren't 2D lists
+    >>> lazy_matrix_mul([1], [2])
+    2
+
+
+Testing with 2 lists with the second not a 2D lists
+	array([2])
+
+Testing when m_a contains a string
+    >>> lazy_matrix_mul([["5"]], [[5]])
+    Traceback (most recent call last):
+        ...
+    ValueError: data type must provide an itemsize
+
+Testing when m_a is empty list
+    >>> lazy_matrix_mul([], [[5]])
+    Traceback (most recent call last):
+        ...
+    ValueError: shapes (0,) and (1,1) not aligned: 0 (dim 0) != 1 (dim 0)
+
+Testing when m_a is empty list of lists
+    >>> lazy_matrix_mul([[]], [[5]])
+    Traceback (most recent call last):
+        ...
+    ValueError: shapes (1,0) and (1,1) not aligned: 0 (dim 1) != 1 (dim 0)
+
+Testing size with m_a containing bool:
+	>>> lazy_matrix_mul([[False]], [[5]])
+	array([[0]])
+
+Testing with more than 2 arg
+    >>> lazy_matrix_mul([[1, 2]], [[3, 4]], [[5, 6]]) 
+    Traceback (most recent call last):
+        ...
+    TypeError: lazy_matrix_mul() takes 2 positional arguments but 3 were given
+
+Testing execution with arguments of incorrect shape
+	>>> lazy_matrix_mul([[1, 2], [3, 4]], [[3, 4]])
+	Traceback (most recent call last):
+        ...
+	ValueError: shapes (2,2) and (1,2) not aligned: 2 (dim 1) != 1 (dim 0)
+
+Testing when m_a is None
+	>>> lazy_matrix_mul(None, [[3, 4]]) 
+	Traceback (most recent call last):
+		...
+	TypeError: unsupported operand type(s) for *: 'NoneType' and 'int'
+ 
+Checking for correct arguments:   
+Testing execution with correct arguments
+	>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+	array([[ 7, 10],
+               [15, 22]])
