@@ -120,4 +120,15 @@ if __name__ == "__main__":
     if len(argv) != 2:
         print("Usage: nqueens N")
         exit(1)
+
+    try:
+        value = int(argv[1])
+    except ValueError:
+        print("N must be a number")
+        exit(1)
+
+    if value < 4:
+        print("N must be at least 4")
+        exit(1)
+
     nQueens(argv[1]).print_solution()
