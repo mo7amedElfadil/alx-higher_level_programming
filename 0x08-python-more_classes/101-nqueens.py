@@ -112,7 +112,7 @@ class nQueens:
             for r, _ in enumerate(sol):
                 x[s].append([r, _])
             print(x[s])
-        return str(x)
+        # return str(x)
 
 
 if __name__ == "__main__":
@@ -121,4 +121,3 @@ if __name__ == "__main__":
         print("Usage: nqueens N")
         exit(1)
     nQueens(argv[1]).print_solution()
-    print()
