@@ -1,0 +1,11 @@
+*
+!/*.py
+!/*.c
+!/.gitignore
+!/*.h
+!/*.so
+!/README.md
+!/LICENSE
+!/*answer.txt
+*main.py
+
