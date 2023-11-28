@@ -49,12 +49,6 @@ class nQueens:
     @n.setter
     def n(self, value):
         """n property setter."""
-        if not value.isdigit():
-            print("N must be a number")
-            exit(1)
-        elif int(value) < 4:
-            print("N must be at least 4")
-            exit(1)
         self.__n = int(value)
 
     @property
@@ -84,7 +78,6 @@ class nQueens:
     def solve_n_queens(self):
         """solve_n_queens (Public): Instance method for solving the problem"""
 
-        @staticmethod
         def backtrack(row):
             """static method that recursively implements backtracking algorithm
                     to check the solution and eliminate non solutions"""
@@ -122,9 +115,9 @@ if __name__ == "__main__":
     if len(argv) != 2:
         print("Usage: nqueens N")
         exit(1)
-
+    value = argv[1]
     try:
-        value = int(argv[1])
+        value = int(value)
     except ValueError:
         print("N must be a number")
         exit(1)
@@ -133,4 +126,4 @@ if __name__ == "__main__":
         print("N must be at least 4")
         exit(1)
 
-    nQueens(argv[1]).print_solution()
+    nQueens(value).print_solution()
