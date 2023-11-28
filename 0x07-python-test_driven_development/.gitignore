@@ -6,6 +6,6 @@
 !/*.so
 !/README.md
 !/LICENSE
-!/tests/*
+!tests/*
 *main.py
 
