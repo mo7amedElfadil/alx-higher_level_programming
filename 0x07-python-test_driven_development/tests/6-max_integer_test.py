@@ -40,6 +40,17 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([0, -3]), max([0, -3]))
         self.assertEqual(max_integer([1.3, 1, 0]), max([1.3, 1, 0]))
 
+    def testListWithNone(self):
+        """Tests for a None type in list of ints"""
+        lst = [4856, 12, None, 514, 550]
+        with self.assertRaises(TypeError):
+            max_integer(lst)
+
+    def testListWithBool(self):
+        """Tests for a non-numeric type in list of ints"""
+        lst = [-4856, -12, False, -514, -550]
+        self.assertEqual(max_integer(lst), 0)
+
     def testLastMaxPositive(self):
         """Tests for all positive with max at end"""
         lst = [53, 12, 48, 236, 514, 5550]
@@ -67,7 +78,9 @@ class TestMaxInteger(unittest.TestCase):
 
     def testFail(self):
         """Tests when function fails
-        first is test for no args"""
+        first is test for no args
+        second tests if raises a NameError for if a variable isnt defined
+        lastly test if it raises a type error when None is passed"""
         self.assertIsNone(max_integer())
         with self.assertRaises(NameError):
             max_integer(x)
@@ -75,7 +88,45 @@ class TestMaxInteger(unittest.TestCase):
             max_integer(None)
 
     def testNotNumArg(self):
-        """Tests for a non-numeric type in list"""
+        """Tests for a non-numeric type in list of ints"""
         lst = [4856, 12, "54", 514, 550]
         with self.assertRaises(TypeError):
             max_integer(lst)
+
+    def testAllStrArg(self):
+        """Tests for all string types in list"""
+        lst = ["4856", "9", "54", "514", "550"]
+        self.assertEqual(max_integer(lst), '9')
+
+    def testOneListArg(self):
+        """Tests for a list type arg in list of ints"""
+        lst = [[3,6], 3,5,9]
+        with self.assertRaises(TypeError):
+            max_integer(lst)
+
+    def testAllListArg(self):
+        """Tests for all list types in list"""
+        lst = [[3,6], [3,5,9]]
+        self.assertEqual(max_integer(lst), [3,6])
+
+    def testOneTupleArg(self):
+        """Tests for a tuple type arg in list of ints"""
+        lst = [(3,6), 3,5,9]
+        with self.assertRaises(TypeError):
+            max_integer(lst)
+
+    def testAllTupleArg(self):
+        """Tests for all tuple types in list"""
+        lst = [(3,6), (3,5,9)]
+        self.assertEqual(max_integer(lst), (3,6))
+
+    def testOneExponentialArg(self):
+        """Tests for exponentials in list"""
+        lst = [1e3, 32,99]
+        self.assertEqual(max_integer(lst), 1000)
+
+    def testAllExponentialArg(self):
+        """Tests for exponentials in list"""
+        lst = [1e3, 17e14,0e100]
+        self.assertEqual(max_integer(lst), 17e14)
+
