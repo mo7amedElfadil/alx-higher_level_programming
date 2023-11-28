@@ -3,8 +3,6 @@
 The challenge is of placing N non-attacking queens on an N×N chessboard
 """
 
-from sys import argv
-
 
 class nQueens:
     """Class nQueens problem solver
@@ -51,12 +49,10 @@ class nQueens:
     @n.setter
     def n(self, value):
         """n property setter."""
-        try:
-            value = int(value)
-        except ValueError:
+        if not value.isdigit():
             print("N must be a number")
             exit(1)
-        if value < 4:
+        elif value < 4:
             print("N must be at least 4")
             exit(1)
         self.__n = int(value)
@@ -87,6 +83,7 @@ class nQueens:
 
     def solve_n_queens(self):
         """solve_n_queens (Public): Instance method for solving the problem"""
+
         @staticmethod
         def backtrack(row):
             """static method that recursively implements backtracking algorithm
@@ -119,6 +116,7 @@ class nQueens:
 
 
 if __name__ == "__main__":
+    from sys import argv
     if len(argv) != 2:
         print("Usage: nqueens N")
         exit(1)
