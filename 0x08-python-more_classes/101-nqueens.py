@@ -52,7 +52,7 @@ class nQueens:
         if not value.isdigit():
             print("N must be a number")
             exit(1)
-        elif value < 4:
+        elif int(value) < 4:
             print("N must be at least 4")
             exit(1)
         self.__n = int(value)
