@@ -111,7 +111,9 @@ class nQueens:
             x.append([])
             for r, _ in enumerate(sol):
                 x[s].append([r, _])
-            print(x[s])
+            # print(x[s])
+        for _ in x:
+            print(_)
         # return str(x)
 
 
