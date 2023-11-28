@@ -121,3 +121,4 @@ if __name__ == "__main__":
         print("Usage: nqueens N")
         exit(1)
     nQueens(argv[1]).print_solution()
+    print()
