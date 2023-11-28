@@ -52,7 +52,9 @@ class nQueens:
     def n(self, value):
         """n property setter."""
         try:
-            value = int(value)
+            x = float(value)
+            if x % 1 != 0:
+                raise ValueError
         except ValueError:
             print("N must be a number")
             exit(1)
