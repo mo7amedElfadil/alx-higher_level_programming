@@ -31,6 +31,13 @@ Testing when div is a char:
         ...
     TypeError: div must be a number
 
+Testing when matrix divided by zero:
+    >>> matrix = [[1, 2], [4, 5]]
+    >>> print(matrix_divided(matrix, 0))
+    Traceback (most recent call last):
+        ...
+    ZeroDivisionError: division by zero
+
 Testing when matrix rows aren't the same size:
     >>> matrix = [[1, 2, 3], [4, 5]]
     >>> print(matrix_divided(matrix, 3))
