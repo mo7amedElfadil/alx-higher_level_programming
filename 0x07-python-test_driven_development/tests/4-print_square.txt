@@ -81,6 +81,5 @@ Testing execution with correct arguments
 
 Testing with size 0
     >>> print_square(0)
-    <BLANKLINE>
 
  
