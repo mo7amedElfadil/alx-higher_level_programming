@@ -9,9 +9,4 @@ class LockedClass():
         - except if the new instance is called first_name
 
     """
-    def __setattr__(self, attr, value):
-        if attr == 'first_name':
-            self.__dict__[attr] = value
-        else:
-            raise AttributeError(f"'{LockedClass.__name__}'" +
-                                 f" object has no attribute '{attr}'")
+        __slots__ = ['first_name']
