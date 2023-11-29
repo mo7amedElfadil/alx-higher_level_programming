@@ -100,33 +100,32 @@ class TestMaxInteger(unittest.TestCase):
 
     def testOneListArg(self):
         """Tests for a list type arg in list of ints"""
-        lst = [[3,6], 3,5,9]
+        lst = [[3, 6], 3, 5, 9]
         with self.assertRaises(TypeError):
             max_integer(lst)
 
     def testAllListArg(self):
         """Tests for all list types in list"""
-        lst = [[3,6], [3,5,9]]
-        self.assertEqual(max_integer(lst), [3,6])
+        lst = [[3, 6], [3, 5, 9]]
+        self.assertEqual(max_integer(lst), [3, 6])
 
     def testOneTupleArg(self):
         """Tests for a tuple type arg in list of ints"""
-        lst = [(3,6), 3,5,9]
+        lst = [(3, 6), 3, 5, 9]
         with self.assertRaises(TypeError):
             max_integer(lst)
 
     def testAllTupleArg(self):
         """Tests for all tuple types in list"""
-        lst = [(3,6), (3,5,9)]
-        self.assertEqual(max_integer(lst), (3,6))
+        lst = [(3, 6), (3, 5, 9)]
+        self.assertEqual(max_integer(lst), (3, 6))
 
     def testOneExponentialArg(self):
         """Tests for exponentials in list"""
-        lst = [1e3, 32,99]
+        lst = [1e3, 32, 99]
         self.assertEqual(max_integer(lst), 1000)
 
     def testAllExponentialArg(self):
         """Tests for exponentials in list"""
-        lst = [1e3, 17e14,0e100]
+        lst = [1e3, 17e14, 0e100]
         self.assertEqual(max_integer(lst), 17e14)
-
