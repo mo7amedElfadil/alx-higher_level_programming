@@ -54,6 +54,12 @@ Testing when m_a contains a string
         ...
     TypeError: m_a should contain only integers or floats
 
+Testing when m_b contains a string
+    >>> matrix_mul([[5]], [["5"]])
+    Traceback (most recent call last):
+        ...
+    TypeError: m_b should contain only integers or floats
+
 Testing when m_a is empty list
     >>> matrix_mul([], [[5]])
     Traceback (most recent call last):
@@ -65,6 +71,18 @@ Testing when m_a is empty list of lists
     Traceback (most recent call last):
         ...
     ValueError: m_a can't be empty
+
+Testing when m_b is empty list
+    >>> matrix_mul([[5]], [])
+    Traceback (most recent call last):
+        ...
+    ValueError: m_b can't be empty
+
+Testing when m_b is empty list of lists
+    >>> matrix_mul([[5]], [[]])
+    Traceback (most recent call last):
+        ...
+    ValueError: m_b can't be empty
 
 Testing size with m_a containing bool:
 	>>> matrix_mul([[False]], [[5]])
@@ -89,6 +107,26 @@ Testing when m_a is None
     Traceback (most recent call last):
         ...
     TypeError: m_a must be a list
+
+Testing when m_b is string
+    >>> matrix_mul([[3, 4]], "6") 
+    Traceback (most recent call last):
+        ...
+    TypeError: m_b must be a list
+
+Testing when m_a is a list of no.s of var size
+	>>> matrix_mul([[1, 2], [5, 3, 4]], [[1, 2], [3, 4]])
+	Traceback (most recent call last):
+        ...
+	TypeError: each row of m_a must be of the same size
+
+
+Testing when m_b is a list of no.s of var size
+	>>> matrix_mul([[1, 2], [3, 4]], [[1, 2, 5], [3, 4]])
+	Traceback (most recent call last):
+        ...
+	TypeError: each row of m_b must be of the same size
+
 
 Checking for correct arguments:   
 Testing execution with correct arguments
