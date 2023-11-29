@@ -9,4 +9,4 @@ class LockedClass():
         - except if the new instance is called first_name
 
     """
-        __slots__ = ['first_name']
+    __slots__ = ['first_name']
