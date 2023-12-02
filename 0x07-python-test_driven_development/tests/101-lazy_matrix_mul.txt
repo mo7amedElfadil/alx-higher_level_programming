@@ -32,6 +32,8 @@ Testing size isn't defined:
 
 Testing with 2 non lists
     >>> lazy_matrix_mul(1, 2)
+	Traceback (most recent call last):
+        ...
     ValueError: Scalar operands are not allowed, use '*' instead
 
 Testing with 2  lists that aren't 2D lists
@@ -97,7 +99,7 @@ Testing when m_a is None
 	>>> lazy_matrix_mul(None, [[3, 4]]) 
 	Traceback (most recent call last):
 		...
-	TypeError: Object arrays are not currently supporte
+	TypeError: Object arrays are not currently supported
  
 Checking for correct arguments:   
 Testing execution with correct arguments
