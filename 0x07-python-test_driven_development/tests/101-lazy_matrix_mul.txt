@@ -32,7 +32,7 @@ Testing size isn't defined:
 
 Testing with 2 non lists
     >>> lazy_matrix_mul(1, 2)
-    2
+    ValueError: Scalar operands are not allowed, use '*' instead
 
 Testing with 2  lists that aren't 2D lists
     >>> lazy_matrix_mul([1], [2])
@@ -45,13 +45,13 @@ Testing when m_a contains a string
     >>> lazy_matrix_mul([["5"]], [[5]])
     Traceback (most recent call last):
         ...
-    ValueError: invalid data type for einsum
+    TypeError: invalid data type for einsum
 
 Testing when m_b contains a string
     >>> lazy_matrix_mul([[5]], [["5"]])
     Traceback (most recent call last):
         ...
-    ValueError: invalid data type for einsum
+    TypeError: invalid data type for einsum
 
 Testing when m_a is a string
     >>> lazy_matrix_mul("5", [[5]])
@@ -63,19 +63,19 @@ Testing when m_b is a string
     >>> lazy_matrix_mul([[5]], "5")
     Traceback (most recent call last):
         ...
-    numpy.core._exceptions._UFuncNoLoopError: ufunc 'matmul' did not contain a loop with signature matching types (dtype('int64'), dtype('<U1')) -> None
+    ValueError: Scalar operands are not allowed, use '*' instead
 
 Testing when m_a is empty list
     >>> lazy_matrix_mul([], [[5]])
     Traceback (most recent call last):
         ...
-    ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 1 is different from 0)
+    ValueError: shapes (0,) and (1,1) not aligned: 0 (dim 0) != 1 (dim 0)
 
 Testing when m_a is empty list of lists
     >>> lazy_matrix_mul([[]], [[5]])
     Traceback (most recent call last):
         ...
-    ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 1 is different from 0)
+    ValueError: shapes (1,0) and (1,1) not aligned: 0 (dim 1) != 1 (dim 0)
 
 Testing size with m_a containing bool:
 	>>> lazy_matrix_mul([[False]], [[5]])
@@ -91,13 +91,13 @@ Testing execution with arguments of incorrect shape
 	>>> lazy_matrix_mul([[1, 2], [3, 4]], [[3, 4]])
 	Traceback (most recent call last):
         ...
-	ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 1 is different from 2)
+	ValueError: shapes (2,2) and (1,2) not aligned: 2 (dim 1) != 1 (dim 0)
 
 Testing when m_a is None
 	>>> lazy_matrix_mul(None, [[3, 4]]) 
 	Traceback (most recent call last):
 		...
-	ValueError: matmul: Input operand 0 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+	TypeError: Object arrays are not currently supporte
  
 Checking for correct arguments:   
 Testing execution with correct arguments
