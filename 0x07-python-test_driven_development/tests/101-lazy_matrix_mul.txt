@@ -33,7 +33,7 @@ Testing size isn't defined:
 Testing with 2 non lists
     >>> lazy_matrix_mul(1, 2)
 	Traceback (most recent call last):
-        ...
+		...
     ValueError: Scalar operands are not allowed, use '*' instead
 
 Testing with 2  lists that aren't 2D lists
