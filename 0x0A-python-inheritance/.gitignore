@@ -1,0 +1,10 @@
+*
+!/*.py
+!/*.c
+!/.gitignore
+!/*.h
+!/*.so
+!/README.md
+!/LICENSE
+*main.py
+

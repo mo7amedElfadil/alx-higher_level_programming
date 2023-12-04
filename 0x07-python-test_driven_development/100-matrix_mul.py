@@ -9,6 +9,7 @@ def matrix_mul(m_a, m_b):
     len of cols of m_a must equal len of rows of m_b
     i.e. (m, n) . (n, p)
     """
+
     if not isinstance(m_a, list):
         raise TypeError("m_a must be a list")
     elif not isinstance(m_b, list):
@@ -41,3 +42,13 @@ def matrix_mul(m_a, m_b):
             result[i].append(sum(m_a[i][k] * m_b[k][j]
                              for k in range(len(m_a[0]))))
     return result
+
+
+m_a = [[a**2, b*a] * 100 for a,b in enumerate(range(100))]
+matdiv = __import__("2-matrix_divided").matrix_divided
+import numpy as np
+m_b = np.transpose(matdiv(m_a, 10)).tolist()
+print(np.shape(m_a))
+print(np.shape(m_b))
+for i in range(100):
+    matrix_mul(m_a, m_b)

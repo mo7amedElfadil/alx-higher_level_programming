@@ -36,6 +36,7 @@ class nQueens:
     def __init__(self, n):
         """class private instance method: constructor.
         """
+        self.n_calls = 0
         self.n = n
         self.state = self.n
         self.solutions = []
@@ -81,7 +82,7 @@ class nQueens:
         def backtrack(row):
             """static method that recursively implements backtracking algorithm
                     to check the solution and eliminate non solutions"""
-
+            self.n_calls += 1
             if row == self.n:
                 self.solutions.append(self.state[:])
                 return
@@ -96,6 +97,7 @@ class nQueens:
 
     def print_solution(self):
         """Instance method that prints the solutions if found"""
+        print(self.n_calls)
         if not self.solutions:
             return
         res = self.solutions.copy()
