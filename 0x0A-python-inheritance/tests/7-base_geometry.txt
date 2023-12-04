@@ -1,0 +1,49 @@
+The ``7-base_geometry`` module
+======================
+
+Using ``BaseGeometry`` class
+-------------------
+
+Importing the function from the module:
+	>>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+
+Checking for module docstring:
+	>>> mod_doc = __import__("7-base_geometry").__doc__
+	>>> len(mod_doc) > 2
+	True
+
+Checking for class docstring:
+	>>> cls_doc = __import__("7-base_geometry").BaseGeometry.__doc__
+	>>> len(cls_doc) > 2
+	True
+
+Checking for function docstring:
+	>>> fun_doc = __import__("7-base_geometry").BaseGeometry.area.__doc__
+	>>> len(fun_doc) > 2
+	True
+	>>> fun_doc = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+	>>> len(fun_doc) > 2
+	True
+
+
+Testing instance creation:
+	>>> bg = BaseGeometry()
+
+Testing integer validation:
+	>>> bg.integer_validator("name", "John")
+	Traceback (most recent call last):
+		...
+	TypeError: name must be an integer
+	
+	>>> bg.integer_validator("age", 0)
+	Traceback (most recent call last):
+		...
+	ValueError: age must be greater than 0
+
+	>>> bg.integer_validator("distance", -4)
+	Traceback (most recent call last):
+		...
+	ValueError: distance must be greater than 0
+	
+	>>> bg.integer_validator("height", 10)
+
