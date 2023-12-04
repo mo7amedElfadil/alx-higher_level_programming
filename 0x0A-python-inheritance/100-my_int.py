@@ -17,11 +17,13 @@ class MyInt(int):
         return super(MyInt, cls).__new__(cls, *args, **kwargs)
 
     def __eq__(self, other):
+        """equality operator, returns True when theyre not equal"""
         if not isinstance(other, int):
             return NotImplemented
         return self.real != other.real
 
     def __ne__(self, other):
+        """inequality operator, returns True when theyre equal"""
         if not isinstance(other, int):
             return NotImplemented
         return self.real == other.real
