@@ -7,4 +7,5 @@
 !/README.md
 !/LICENSE
 *main.py
-
+!/tests
+!/tests/*
