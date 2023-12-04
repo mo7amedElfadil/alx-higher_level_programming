@@ -9,7 +9,12 @@ class MyInt(int):
         its == and != operators are inverted
     """
     def __init__(self, value):
+        """instantiate instance of the class"""
         super().__init__()
+
+    def __new__(cls, *args, **kwargs):
+        """create a new instance of the class"""
+        return super(MyInt, cls).__new__(cls, *args, **kwargs)
 
     def __eq__(self, other):
         if not isinstance(other, int):
