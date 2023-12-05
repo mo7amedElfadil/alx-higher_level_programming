@@ -13,12 +13,10 @@ def add_items():
     try:
         my_list = list(load_from_json_file("add_item.json"))
     except FileNotFoundError:
-        save_to_json_file([], "add_item.json")
         my_list = []
-    for item in argv[1:]:
-        my_list.append(item)
+    my_list.extend(argv[1:])
 
     save_to_json_file(my_list, "add_item.json")
 
-
-add_items()
+if __name__ == "__main__":
+    add_items()
