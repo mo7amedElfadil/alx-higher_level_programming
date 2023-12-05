@@ -13,6 +13,6 @@ def class_to_json(obj):
     """
 
     my_dict = {}
-    for d in obj.__dict__:
-        my_dict[d] = getattr(obj, d)
+    if hasattr(obj, "__dict__"):
+        my_dict = obj.__dict__.copy()
     return my_dict
