@@ -15,5 +15,5 @@ def pascal_triangle(n):
         v = 1
         for j in range(1, i + 1):
             pas[i - 1].append(v)
-            v = v * (i -j) // j
+            v = v * (i - j) // j
     return pas
