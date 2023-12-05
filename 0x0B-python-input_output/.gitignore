@@ -1,0 +1,12 @@
+*
+!/*.py
+!/*.c
+!/.gitignore
+!/*.h
+!/*.so
+!/README.md
+!/LICENSE
+*main*.py
+!/tests
+!/tests/*
+*my_class*
