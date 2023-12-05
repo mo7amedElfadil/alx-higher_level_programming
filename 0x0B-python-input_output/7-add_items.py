@@ -7,6 +7,8 @@ load_from_json_file = __import__("6-load_from_json_file").load_from_json_file
 
 
 def add_items():
+    """adds all arguments to a Python list, and then save them to a file
+    """
     from sys import argv
     try:
         my_list = list(load_from_json_file("add_item.json"))
