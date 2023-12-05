@@ -32,4 +32,5 @@ class Student:
         return self.__dict__.copy()
 
     def reload_from_json(self, json):
-        self.__dict__ = json
+        for key, val in json.items():
+            self.__dict__[key] = val
