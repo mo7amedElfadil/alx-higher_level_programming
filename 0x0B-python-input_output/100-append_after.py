@@ -18,4 +18,4 @@ def append_after(filename="", search_string="", new_string=""):
             if line.find(search_string) != -1:
                 lines.append(new_string)
         fp.seek(0)
-        fp.write("".join(lines))
+        fp.writelines(lines)
