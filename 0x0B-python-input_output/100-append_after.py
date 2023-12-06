@@ -11,10 +11,14 @@ def append_after(filename="", search_string="", new_string=""):
                 If the file already exists, appends text to existing content.
                 Create a new file if the file does not exist.
     """
-    with open(filename, "r+") as fp:
+    with open(filename, "r", encoding="utf-8") as fp:
         lines = fp.readlines()
         for i, line in enumerate(lines):
             if search_string in line:
                 lines.insert(i + 1, new_string)
-        fp.seek(0)
+
+    with open(filename, "w", encoding="utf-8") as fp:
         fp.writelines(lines)
+
+
+append_after("append_after_100.txt", "Python", "\"new_string\"\n")
