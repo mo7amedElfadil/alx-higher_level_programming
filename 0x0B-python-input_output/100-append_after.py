@@ -19,6 +19,3 @@ def append_after(filename="", search_string="", new_string=""):
 
     with open(filename, "w", encoding="utf-8") as fp:
         fp.writelines(lines)
-
-
-append_after("append_after_100.txt", "Python", "\"new_string\"\n")
