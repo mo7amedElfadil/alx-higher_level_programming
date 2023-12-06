@@ -10,7 +10,7 @@ Each 10 lines and after a keyboard interruption (CTRL + C),
     where is the sum of all previous (see input format above)
     Number of lines by status code:
         possible status code: 200, 301, 400, 401, 403, 404, 405 and 500
-        if a status code doesn’t appear, don’t print anything for this status code
+        if a stat code dsn’t appear, don’t print anything for this status code
         format: <status code>: <number>
         status codes should be printed in ascending order
 """
@@ -21,7 +21,6 @@ def print_stats(df, size):
     for k, v in df.items():
         if v:
             print(f"{k}: {v}")
-
 
 
 def update_stats():
@@ -46,7 +45,7 @@ def update_stats():
                     df[int(lst[-2])] += 1
                     count += 1
             except (IndexError, ValueError):
-                    pass
+                pass
             if count % 10 == 0:
                 print_stats(df, size)
         print_stats(df, size)
