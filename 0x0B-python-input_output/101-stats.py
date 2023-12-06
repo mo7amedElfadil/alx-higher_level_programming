@@ -29,19 +29,20 @@ def update_stats():
     from sys import stdin
     try:
         count = 0
+        lst = []
         stat = [200, 301, 400, 401, 403, 404, 405, 500]
         size = 0
         df = {}
         df = df.fromkeys(stat, 0)
         for line in stdin:
-            *_, cd, sz = line.split()
+            lst = line.split()
             try:
-                size += int(sz)
+                size += int(lst[-1])
             except (IndexError, ValueError):
                 pass
             try:
-                if int(cd) in df:
-                    df[int(cd)] += 1
+                if int(lst[-2]) in df:
+                    df[int(lst[-2])] += 1
                     count += 1
             except (IndexError, ValueError):
                 pass
