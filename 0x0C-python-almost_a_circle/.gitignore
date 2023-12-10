@@ -1,0 +1,12 @@
+*
+!/*.py
+!/.gitignore
+!/*.h
+!/README.md
+!/LICENSE
+!/tests
+!/tests/*
+!/tests/test_models/*
+!/models
+!/models/*
+*main.py
