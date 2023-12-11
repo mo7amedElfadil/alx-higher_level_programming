@@ -49,11 +49,15 @@ class Base:
         """
         from json import dump
         res = []
-        with open(f"{cls.__name__}.json", "w") as f:
-            for obj in list_objs:
-                res.append(obj.to_dictionary())
 
-            f.write(cls.to_json_string(res))
+        try:
+            with open(f"{cls.__name__}.json", "w") as f:
+                for obj in list_objs:
+                    res.append(obj.to_dictionary())
+
+                f.write(cls.to_json_string(res))
+        except IOError:
+            pass
 
     @classmethod
     def create(cls, **dictionary):
