@@ -338,6 +338,24 @@ class TestSquareClassBreaking(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             s1.update(89, 2, 4, -5)
 
+    def test_update_incorrect_kwargs(self):
+        """Testing the udpate method with incorrect **kwargs
+        order if args is -> ['id', 'width', 'height', 'x', 'y']
+        """
+        r1 = Rectangle(width=1, height=1, x=0, y=0, id=1)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r1.update(id=89, size=-2)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r1.update(id=89, size='2')
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r1.update(x='89', size=3, id=4)
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            r1.update(x=-89, size=3, id=4)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r1.update(id=89, size=2, x=4, y=None)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            r1.update(id=89, size=2, x=4, y=-5)
+
     def test_display_with_arg(self):
         """Test display with too many args (should be none)"""
         with self.assertRaises(TypeError):
