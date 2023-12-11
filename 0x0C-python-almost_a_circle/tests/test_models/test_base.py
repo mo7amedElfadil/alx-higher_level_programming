@@ -7,13 +7,14 @@ import inspect
 import pep8
 from models.rectangle import Rectangle
 from models.square import Square
+from json import dumps, loads
 
 
 class TestBaseDocPep8(unittest.TestCase):
     """unittest class for Base class documentation and pep8 conformaty"""
     def test_pep8_base(self):
         """Test that the base module conforms to PEP8."""
-        style = pep8.StyleGuide()
+        style = pep8.StyleGuide(quiet=True)
         result = style.check_files(['models/base.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
@@ -77,11 +78,13 @@ class TestBaseClassWorking(unittest.TestCase):
 
     def test_to_json_str(self):
         """Test to_json_string method"""
-        jstr = Base.to_json_string([{'x': 1, 'y': 9, 'id': 1,
-                                   'height': 2, 'width': 10}])
+        my_list = [{'x': 1, 'y': 9, 'id': 1,
+                    'height': 2, 'width': 10}]
+        jstr = Base.to_json_string(my_list)
         self.assertIsInstance(jstr, str)
         self.assertEqual(jstr, '[{"x": 1, "y": 9, "id": 1,'
                                ' "height": 2, "width": 10}]')
+        self.assertEqual(loads(jstr), my_list)
 
     def test_to_json_string_empty_str(self):
         """Test to_json_string empty str"""

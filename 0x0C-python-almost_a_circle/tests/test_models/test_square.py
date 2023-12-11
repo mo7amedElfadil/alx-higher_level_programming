@@ -87,7 +87,10 @@ class TestSquareClassWorking(unittest.TestCase):
         """Test multiple instance creations"""
         s1 = self.s1
         s2 = self.s2
+        s3 = Square(1)
+        s4 = Square(2)
         self.assertEqual([s1.id, s2.id], [1, 12])
+        self.assertEqual([s3.id, s4.id], [25, 26])
 
     def test_square_area(self):
         """Test area"""

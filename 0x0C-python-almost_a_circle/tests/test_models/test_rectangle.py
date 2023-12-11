@@ -87,7 +87,10 @@ class TestRectangleClassWorking(unittest.TestCase):
         """Test multiple instance creations"""
         r1 = self.r1
         r2 = self.r2
+        r3 = Rectangle(1, 1)
+        r4 = Rectangle(1, 2)
         self.assertEqual([r1.id, r2.id], [1, 12])
+        self.assertEqual([r3.id, r4.id], [13, 14])
 
     def test_rectangle_area(self):
         """Test area"""
