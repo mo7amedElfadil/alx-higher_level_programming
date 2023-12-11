@@ -49,12 +49,13 @@ class Base:
         """
         from json import dump
         res = []
-
         try:
             with open(f"{cls.__name__}.json", "w") as f:
+                if list_objs is None or list_objs == []:
+                    f.write("[]")
+                    return
                 for obj in list_objs:
                     res.append(obj.to_dictionary())
-
                 f.write(cls.to_json_string(res))
         except IOError:
             pass
