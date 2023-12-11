@@ -47,6 +47,12 @@ class TestBaseDocPep8(unittest.TestCase):
 class TestBaseClassWorking(unittest.TestCase):
     """unittest class for Base class when everything works"""
 
+    def test_instance_no_id(self):
+        """Test instance Creation with id none"""
+        b1 = Base()
+        self.assertIsInstance(b1, Base)
+        self.assertEqual(b1.id, 1)
+
     def test_instance(self):
         """Test instance Creation with id none"""
         b1 = Base(2)
