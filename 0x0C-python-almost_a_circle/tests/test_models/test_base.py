@@ -50,8 +50,11 @@ class TestBaseClassWorking(unittest.TestCase):
     def test_instance_no_id(self):
         """Test instance Creation with id none"""
         b1 = Base()
+        my_id = 4
         self.assertIsInstance(b1, Base)
-        self.assertEqual(b1.id, 1)
+        self.assertEqual(b1.id, my_id)
+        b2 = Base()
+        self.assertEqual(b2.id, my_id + 1)
 
     def test_instance(self):
         """Test instance Creation with id none"""
@@ -74,12 +77,23 @@ class TestBaseClassWorking(unittest.TestCase):
 
     def test_to_json_str(self):
         """Test to_json_string method"""
-        b1 = Base()
-        jstr = b1.to_json_string([{'x': 1, 'y': 9, 'id': 1,
+        jstr = Base.to_json_string([{'x': 1, 'y': 9, 'id': 1,
                                    'height': 2, 'width': 10}])
         self.assertIsInstance(jstr, str)
         self.assertEqual(jstr, '[{"x": 1, "y": 9, "id": 1,'
                                ' "height": 2, "width": 10}]')
+
+    def test_to_json_string_empty_str(self):
+        """Test to_json_string empty str"""
+        jstr = Base.to_json_string([])
+        self.assertTrue(type(jstr) is str)
+        self.assertEqual(jstr, "[]")
+
+    def test_None_to_json_String(self):
+        """Test to_json_string None"""
+        jstr = Base.to_json_string(None)
+        self.assertTrue(type(jstr) is str)
+        self.assertEqual(jstr, "[]")
 
     def test_from_json_str(self):
         """Test from_json_string method"""
@@ -110,6 +124,18 @@ class TestBaseClassWorking(unittest.TestCase):
         self.assertEqual(jlist, my_list)
         self.assertEqual(jlist[0], my_list[0])
         self.assertEqual(jlist[1], my_list[1])
+
+    def test_from_json_string_empty_str(self):
+        """Test to_json_string empty str"""
+        jlist = Base.from_json_string("")
+        self.assertTrue(type(jlist) is list)
+        self.assertEqual(jlist, [])
+
+    def test_None_from_json_String(self):
+        """Test to_json_string None"""
+        jlist = Base.from_json_string(None)
+        self.assertTrue(type(jlist) is list)
+        self.assertEqual(jlist, [])
 
     def test_save_to_file(self):
         """Test save_to_file method"""

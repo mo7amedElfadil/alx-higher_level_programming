@@ -64,10 +64,6 @@ class Base:
     def create(cls, **dictionary):
         """returns an instance with all attributes already set
         """
-        """
-        {"a" : 3}
-        {"a" : 3, "width" , "height", }
-        """
         attribs = ['width', 'height']
         if dictionary and len(dictionary) > 0:
             if (cls.__name__ == "Rectangle" and len(dictionary) > 1 and
@@ -149,61 +145,64 @@ class Base:
         """draw shape using turtle module"""
         import turtle
         from random import choice
+        try:
+            no_colors = 8
 
-        no_colors = 8
+            colors = ["#"+''.join([choice('0123456789ABCDEF')
+                                  for j in range(6)])
+                      for i in range(no_colors)]
+            T = turtle.Turtle()
+            T.getscreen().bgcolor("#"+''.join([choice('0123456789ABCDEF')
+                                               for j in range(6)]))
+            T.speed(1)
+            T.shape("turtle")
+            T.pensize(2)
+            for rect in list_rectangles:
+                c1 = choice(colors)
+                T.color("white", c1)
+                T.setpos(rect.x, rect.y)
+                T.showturtle()
+                T.begin_fill()
+                T.pendown()
+                T.forward(rect.width)
+                T.setheading(90)
 
-        colors = ["#"+''.join([choice('0123456789ABCDEF') for j in range(6)])
-                  for i in range(no_colors)]
-        T = turtle.Turtle()
-        T.getscreen().bgcolor("#"+''.join([choice('0123456789ABCDEF')
-                                           for j in range(6)]))
-        T.speed(3)
-        T.shape("turtle")
-        T.pensize(2)
-        for rect in list_rectangles:
-            T.showturtle()
-            c1 = choice(colors)
-            T.color("white", c1)
-            T.setpos(rect.x, rect.y)
-            T.begin_fill()
-            T.pendown()
-            T.forward(rect.width)
-            T.setheading(90)
+                T.forward(rect.height)
+                T.setheading(180)
 
-            T.forward(rect.height)
-            T.setheading(180)
+                T.forward(rect.width)
+                T.setheading(270)
 
-            T.forward(rect.width)
-            T.setheading(270)
+                T.forward(rect.height)
+                T.setheading(0)
+                T.end_fill()
+                T.penup()
+                T.hideturtle()
 
-            T.forward(rect.height)
-            T.setheading(0)
-            T.end_fill()
-            T.penup()
-            T.hideturtle()
+            T.getscreen().bgcolor("#"+''.join([choice('0123456789ABCDEF')
+                                               for j in range(6)]))
+            for sq in list_squares:
+                c1 = choice(colors)
+                T.color("white", c1)
+                T.setpos(sq.x, sq.y)
+                T.showturtle()
+                T.begin_fill()
+                T.pendown()
+                T.forward(sq.size)
+                T.setheading(90)
 
-        T.getscreen().bgcolor("#"+''.join([choice('0123456789ABCDEF')
-                                           for j in range(6)]))
-        for sq in list_squares:
-            T.showturtle()
-            c1 = choice(colors)
-            T.color("white", c1)
-            T.setpos(sq.x, sq.y)
-            T.begin_fill()
-            T.pendown()
-            T.forward(sq.size)
-            T.setheading(90)
+                T.forward(sq.size)
+                T.setheading(180)
 
-            T.forward(sq.size)
-            T.setheading(180)
+                T.forward(sq.size)
+                T.setheading(270)
 
-            T.forward(sq.size)
-            T.setheading(270)
+                T.forward(sq.size)
+                T.setheading(0)
+                T.end_fill()
+                T.penup()
+                T.hideturtle()
 
-            T.forward(sq.size)
-            T.setheading(0)
-            T.end_fill()
-            T.penup()
-            T.hideturtle()
-
-        turtle.exitonclick()
+            turtle.exitonclick()
+        except turtle.Terminator:
+            pass
