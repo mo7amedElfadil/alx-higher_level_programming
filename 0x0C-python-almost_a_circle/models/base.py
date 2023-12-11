@@ -31,7 +31,6 @@ class Base:
         from json import dumps
         if list_dictionaries is None:
             return "[]"
-
         return dumps(list_dictionaries)
 
     @staticmethod
@@ -39,7 +38,9 @@ class Base:
         """returns the list of the JSON string representation json_string
         """
         from json import loads
-
+        if json_string is None or json_string == "[]" or\
+                json_string == "":
+            return []
         return loads(json_string)
 
     @classmethod
@@ -58,22 +59,43 @@ class Base:
     def create(cls, **dictionary):
         """returns an instance with all attributes already set
         """
-        inst = cls(1,1)
-        inst.update(**dictionary)
-        return inst
+        """
+        {"a" : 3}
+        {"a" : 3, "width" , "height", }
+        """
+        attribs = ['width', 'height']
+        if dictionary and len(dictionary) > 0:
+            if (cls.__name__ == "Rectangle" and len(dictionary) > 1 and
+                    all(x in dictionary.keys() for x in attribs)):
+                inst = cls(1, 1)
+            elif (cls.__name__ == "Square" and len(dictionary) > 0 and
+                    "size" in dictionary.keys()):
+                inst = cls(1)
+            else:
+                return
+            inst.update(**dictionary)
+            return inst
 
     @classmethod
     def load_from_file(cls):
-        res = []
-        with open(f"{cls.__name__}.json", "r") as f:
-            for line in f:
-                try:
-                    for item in cls.from_json_string(line):
-                        res.append(cls.create(**item))
-                except Exception as e:
-                    print("[{}] {}".format(e.__class__.__name__, e))
-        return res
+        """save instance serialization to CSV
+        format:
+            Rectangle: <id>,<width>,<height>,<x>,<y>
+            Square: <id>,<size>,<x>,<y>
+        """
 
+        res = []
+        try:
+            with open(f"{cls.__name__}.json", "r") as f:
+                for line in f:
+                    try:
+                        for item in cls.from_json_string(line):
+                            res.append(cls.create(**item))
+                    except Exception:
+                        pass
+        except IOError:
+            pass
+        return res
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
@@ -106,11 +128,77 @@ class Base:
         """
         from csv import DictReader as dr
         res = []
-        with open(f"{cls.__name__}.csv", "r", newline="") as f:
-            cr = dr(f, restval=int)
-            for row in cr:
-                for k in row:
-                    row[k] = int(row[k])
-                res.append(cls.create(**row))
-
+        try:
+            with open(f"{cls.__name__}.csv", "r", newline="") as f:
+                cr = dr(f, restval=int)
+                for row in cr:
+                    for k in row:
+                        row[k] = int(row[k])
+                    res.append(cls.create(**row))
+        except IOError:
+            pass
         return res
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """draw shape using turtle module"""
+        import turtle
+        from random import choice
+
+        no_colors = 8
+
+        colors = ["#"+''.join([choice('0123456789ABCDEF') for j in range(6)])
+                  for i in range(no_colors)]
+        T = turtle.Turtle()
+        T.getscreen().bgcolor("#"+''.join([choice('0123456789ABCDEF')
+                                           for j in range(6)]))
+        T.speed(3)
+        T.shape("turtle")
+        T.pensize(2)
+        for rect in list_rectangles:
+            T.showturtle()
+            c1 = choice(colors)
+            T.color("white", c1)
+            T.setpos(rect.x, rect.y)
+            T.begin_fill()
+            T.pendown()
+            T.forward(rect.width)
+            T.setheading(90)
+
+            T.forward(rect.height)
+            T.setheading(180)
+
+            T.forward(rect.width)
+            T.setheading(270)
+
+            T.forward(rect.height)
+            T.setheading(0)
+            T.end_fill()
+            T.penup()
+            T.hideturtle()
+
+        T.getscreen().bgcolor("#"+''.join([choice('0123456789ABCDEF')
+                                           for j in range(6)]))
+        for sq in list_squares:
+            T.showturtle()
+            c1 = choice(colors)
+            T.color("white", c1)
+            T.setpos(sq.x, sq.y)
+            T.begin_fill()
+            T.pendown()
+            T.forward(sq.size)
+            T.setheading(90)
+
+            T.forward(sq.size)
+            T.setheading(180)
+
+            T.forward(sq.size)
+            T.setheading(270)
+
+            T.forward(sq.size)
+            T.setheading(0)
+            T.end_fill()
+            T.penup()
+            T.hideturtle()
+
+        turtle.exitonclick()

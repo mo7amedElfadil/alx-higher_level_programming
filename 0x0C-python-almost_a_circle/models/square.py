@@ -38,7 +38,7 @@ class Square(Rectangle):
 
     @size.setter
     def size(self, value):
-        if not isinstance(value, int):
+        if not type(value) is int:
             raise TypeError("width must be an integer")
         elif value <= 0:
             raise ValueError("width must be > 0")
@@ -55,9 +55,13 @@ class Square(Rectangle):
         """
         attribs = ['id', 'size', 'x', 'y']
         for i, arg in enumerate(args):
-            setattr(self, attribs[i], arg)
+            if i < len(attribs):
+                setattr(self, attribs[i], arg)
+        if args:
+            return
         for k, v in kwargs.items():
-            setattr(self, k, v)
+            if k in attribs:
+                setattr(self, k, v)
 
     def to_dictionary(self):
         """returns the dictionary representation of a Square

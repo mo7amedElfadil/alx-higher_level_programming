@@ -38,11 +38,13 @@ class Rectangle(Base):
 
     @property
     def width(self):
+        """property getter"""
         return self.__width
 
     @width.setter
     def width(self, value):
-        if not isinstance(value, int):
+        """property setter"""
+        if not type(value) is int:
             raise TypeError("width must be an integer")
         elif value <= 0:
             raise ValueError("width must be > 0")
@@ -50,11 +52,13 @@ class Rectangle(Base):
 
     @property
     def height(self):
+        """property getter"""
         return self.__height
 
     @height.setter
     def height(self, value):
-        if not isinstance(value, int):
+        """property setter"""
+        if not type(value) is int:
             raise TypeError("height must be an integer")
         elif value <= 0:
             raise ValueError("height must be > 0")
@@ -62,11 +66,13 @@ class Rectangle(Base):
 
     @property
     def x(self):
+        """property getter"""
         return self.__x
 
     @x.setter
     def x(self, value):
-        if not isinstance(value, int):
+        """property setter"""
+        if not type(value) is int:
             raise TypeError("x must be an integer")
         elif value < 0:
             raise ValueError("x must be >= 0")
@@ -74,11 +80,13 @@ class Rectangle(Base):
 
     @property
     def y(self):
+        """property getter"""
         return self.__y
 
     @y.setter
     def y(self, value):
-        if not isinstance(value, int):
+        """property setter"""
+        if not type(value) is int:
             raise TypeError("y must be an integer")
         elif value < 0:
             raise ValueError("y must be >= 0")
@@ -109,9 +117,13 @@ class Rectangle(Base):
         """
         attribs = ['id', 'width', 'height', 'x', 'y']
         for i, arg in enumerate(args):
-            setattr(self, attribs[i], arg)
+            if i < len(attribs):
+                setattr(self, attribs[i], arg)
+        if args:
+            return
         for k, v in kwargs.items():
-            setattr(self, k, v)
+            if k in attribs:
+                setattr(self, k, v)
 
     def to_dictionary(self):
         """returns the dictionary representation of a Rectangle
@@ -124,14 +136,3 @@ class Rectangle(Base):
                 "x": self.x,
                 "y": self.y
                 }
-
-
-
-if __name__ == "__main__":
-    r1 = Rectangle(3, 5, 1)
-    r1_dictionary = r1.to_dictionary()
-    r2 = Rectangle.create(**r1_dictionary)
-    print(r1)
-    print(r2)
-    print(r1 is r2)
-    print(r1 == r2)
