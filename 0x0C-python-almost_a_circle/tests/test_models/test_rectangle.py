@@ -90,7 +90,7 @@ class TestRectangleClassWorking(unittest.TestCase):
         r3 = Rectangle(1, 1)
         r4 = Rectangle(1, 2)
         self.assertEqual([r1.id, r2.id], [1, 12])
-        self.assertEqual([r3.id, r4.id], [13, 14])
+        self.assertEqual([r3.id, r4.id], [15, 16])
 
     def test_rectangle_area(self):
         """Test area"""
@@ -102,7 +102,6 @@ class TestRectangleClassWorking(unittest.TestCase):
     def test_rectangle_print(self):
         """Test print"""
         r1 = self.r1
-        r2 = self.r2
         with RS(SIO()) as f:
             print(r1, end="")
         self.assertEqual(f.getvalue(), str(r1))
@@ -171,7 +170,7 @@ class TestRectangleClassWorking(unittest.TestCase):
         self.assertTrue(type(jdict) is dict)
         self.assertEqual(str(self.default), str(Rectangle.create(**jdict)))
 
-    def test_rectangle_display(self):
+    def test_display(self):
         """Test display"""
         r1 = Rectangle(3, 2)
         r2 = Rectangle(1, 1)
@@ -227,6 +226,22 @@ class TestRectangleClassWorking(unittest.TestCase):
         self.assertTrue(isfile(Rectangle.__name__ + ".json"))
         with open(Rectangle.__name__ + ".json", "r") as file:
             self.assertEqual(loads(file.read()), [self.r1.to_dictionary()])
+
+    def test_save_to_file_none(self):
+        """Test save_to_file method with none"""
+        from json import loads
+        Rectangle.save_to_file(None)
+        self.assertTrue(isfile(Rectangle.__name__ + ".json"))
+        with open(Rectangle.__name__ + ".json", "r") as file:
+            self.assertEqual(loads(file.read()), [])
+
+    def test_save_to_file_empty_list(self):
+        """Test save_to_file method with empty list"""
+        from json import loads
+        Rectangle.save_to_file([])
+        self.assertTrue(isfile(Rectangle.__name__ + ".json"))
+        with open(Rectangle.__name__ + ".json", "r") as file:
+            self.assertEqual(loads(file.read()), [])
 
     def test_load_from_file(self):
         """Test load_from_file method"""

@@ -225,6 +225,22 @@ class TestSquareClassWorking(unittest.TestCase):
         with open(Square.__name__ + ".json", "r") as file:
             self.assertEqual(loads(file.read()), [self.s1.to_dictionary()])
 
+    def test_save_to_file_none(self):
+        """Test save_to_file method with none"""
+        from json import loads
+        Square.save_to_file(None)
+        self.assertTrue(isfile(Square.__name__ + ".json"))
+        with open(Square.__name__ + ".json", "r") as file:
+            self.assertEqual(loads(file.read()), [])
+
+    def test_save_to_file_empty_list(self):
+        """Test save_to_file method with empty list"""
+        from json import loads
+        Square.save_to_file([])
+        self.assertTrue(isfile(Square.__name__ + ".json"))
+        with open(Square.__name__ + ".json", "r") as file:
+            self.assertEqual(loads(file.read()), [])
+
     def test_load_from_file(self):
         """Test load_from_file method"""
         from json import loads
