@@ -99,6 +99,15 @@ class TestRectangleClassWorking(unittest.TestCase):
         self.assertEqual(r1.area(), 10 * 2)
         self.assertEqual(r2.area(), 5 * 7)
 
+    def test_rectangle_print(self):
+        """Test print"""
+        r1 = self.r1
+        r2 = self.r2
+        with RS(SIO()) as f:
+            print(r1, end="")
+        self.assertEqual(f.getvalue(), str(r1))
+        self.assertEqual(f.getvalue(), "[Rectangle] (1) 0/0 - 10/2")
+
     def test_update_args(self):
         """Testing the udpate method with *args and str representation
         order if args is -> ['id', 'width', 'height', 'x', 'y']
@@ -387,6 +396,12 @@ class TestRectangleClassBreaking(unittest.TestCase):
         """Test display with too many args (should be none)"""
         with self.assertRaises(TypeError):
             self.r1.display(1)
+
+    def test_rectangle_area_failing(self):
+        """Test area"""
+        r1 = self.default
+        with self.assertRaises(TypeError):
+            r1.area(1)
 
     def test_nb_objects_private(self):
         r1 = self.r1

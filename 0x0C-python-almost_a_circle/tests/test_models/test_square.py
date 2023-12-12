@@ -99,6 +99,14 @@ class TestSquareClassWorking(unittest.TestCase):
         self.assertEqual(s1.area(), 10 ** 2)
         self.assertEqual(s2.area(), 5 ** 2)
 
+    def test_square_print(self):
+        """Test print"""
+        s1 = self.s1
+        with RS(SIO()) as f:
+            print(s1, end="")
+        self.assertEqual(f.getvalue(), str(s1))
+        self.assertEqual(f.getvalue(), "[Square] (1) 0/0 - 10")
+
     def test_update_args(self):
         """Testing the udpate method with *args and str representation
         order if args is -> ['id', 'size', 'x', 'y']
@@ -360,6 +368,12 @@ class TestSquareClassBreaking(unittest.TestCase):
         """Test display with too many args (should be none)"""
         with self.assertRaises(TypeError):
             self.s1.display(1)
+
+    def test_rectangle_area_failing(self):
+        """Test area"""
+        s1 = self.default
+        with self.assertRaises(TypeError):
+            s1.area(1)
 
     def test_nb_objects_private(self):
         s1 = self.s1
