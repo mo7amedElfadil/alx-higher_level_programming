@@ -225,8 +225,8 @@ class TestSquareClassWorking(unittest.TestCase):
         with open(Square.__name__ + ".json", "r") as file:
             self.assertEqual(loads(file.read()), [self.s1.to_dictionary()])
 
-    def test_save_to_file_none(self):
-        """Test save_to_file method with none"""
+    def test_save_to_file_None(self):
+        """Test save_to_file method with None"""
         from json import loads
         Square.save_to_file(None)
         self.assertTrue(isfile(Square.__name__ + ".json"))

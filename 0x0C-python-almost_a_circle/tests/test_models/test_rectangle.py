@@ -227,8 +227,8 @@ class TestRectangleClassWorking(unittest.TestCase):
         with open(Rectangle.__name__ + ".json", "r") as file:
             self.assertEqual(loads(file.read()), [self.r1.to_dictionary()])
 
-    def test_save_to_file_none(self):
-        """Test save_to_file method with none"""
+    def test_save_to_file_None(self):
+        """Test save_to_file method with None"""
         from json import loads
         Rectangle.save_to_file(None)
         self.assertTrue(isfile(Rectangle.__name__ + ".json"))
@@ -236,7 +236,7 @@ class TestRectangleClassWorking(unittest.TestCase):
             self.assertEqual(loads(file.read()), [])
 
     def test_save_to_file_empty_list(self):
-        """Test save_to_file method with empty list"""
+        """Test save_to_file method with [] empty list"""
         from json import loads
         Rectangle.save_to_file([])
         self.assertTrue(isfile(Rectangle.__name__ + ".json"))

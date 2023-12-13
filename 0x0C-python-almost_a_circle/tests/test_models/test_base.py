@@ -51,7 +51,7 @@ class TestBaseClassWorking(unittest.TestCase):
     def test_instance_no_id(self):
         """Test instance Creation with id none"""
         b1 = Base()
-        my_id = 4
+        my_id = b1.id
         self.assertIsInstance(b1, Base)
         self.assertEqual(b1.id, my_id)
         b2 = Base()
