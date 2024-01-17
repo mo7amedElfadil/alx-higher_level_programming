@@ -4,11 +4,11 @@
 -- You can use only one SELECT statement
 -- The database name will be passed as an argument of the mysql command
 -- cat 103-rating_genres.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows_rate
-SELECT g.name as name, SUM(sr.rate) as rating
-FROM tv_genres as g
-JOIN tv_show_genres as sg ON sg.genre_id = g.id
-JOIN tv_shows as s ON sg.show_id = s.id
-JOIN tv_show_ratings as sr ON s.id = sr.show_id
+SELECT g.name AS name, SUM(sr.rate) AS rating
+FROM tv_genres AS g
+JOIN tv_show_genres AS sg ON sg.genre_id = g.id
+JOIN tv_shows AS s ON sg.show_id = s.id
+JOIN tv_show_ratings AS sr ON s.id = sr.show_id
 GROUP BY name
 ORDER BY rating DESC
 ;
