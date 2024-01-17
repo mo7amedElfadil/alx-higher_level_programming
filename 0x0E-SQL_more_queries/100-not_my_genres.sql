@@ -9,12 +9,11 @@ SELECT g.name AS name
 FROM tv_genres AS g
 LEFT OUTER JOIN
 (
-SELECT g.name as name, g.id AS g_id
+SELECT sg.genre_id AS g_id
 FROM tv_shows AS s
 LEFT JOIN tv_show_genres AS sg ON sg.show_id = s.id
-LEFT JOIN tv_genres AS g ON sg.genre_id = g.id
 WHERE s.title = "Dexter"
-) X on g.id = g_id
+) X on g_id = g.id
 WHERE X.g_id IS NULL
 ORDER BY name
 ;
