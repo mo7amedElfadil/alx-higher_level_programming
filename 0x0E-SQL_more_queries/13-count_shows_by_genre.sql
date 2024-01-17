@@ -10,9 +10,11 @@
 -- tv_shows : id | title  
 -- tv_genre : id | name 
 -- cat 13-count_shows_by_genre.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows
-SELECT g.name AS genre, COUNT(*) AS number_of_shows
-FROM tv_genres AS g
-LEFT JOIN tv_show_genres AS s ON s.genre_id = g.id
+SELECT
+	g.name AS genre, 
+	COUNT(*) AS number_of_shows
+FROM tv_genres g
+LEFT JOIN tv_show_genres s ON s.genre_id = g.id
 GROUP BY g.name
 ORDER BY number_of_shows DESC
 ;
