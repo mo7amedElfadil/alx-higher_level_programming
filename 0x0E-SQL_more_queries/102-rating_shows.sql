@@ -8,5 +8,5 @@ SELECT s.title as title, SUM(sr.rate) as rating
 FROM tv_shows as s
 JOIN tv_show_ratings as sr ON s.id = sr.show_id
 GROUP BY title
-ORDER BY RATING DESC
+ORDER BY rating DESC
 ;
