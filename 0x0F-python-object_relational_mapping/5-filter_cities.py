@@ -34,7 +34,7 @@ def select_cities(usr, pw, db, name):
         rows = cur.fetchall()
         print(', '.join(r[0] for r in rows))
         # for row in rows:
-            # print(row[0], end=(", ", "\n")[row == rows[-1]])
+        # print(row[0], end=(", ", "\n")[row == rows[-1]])
 
     except MySQLdb.Error as e:
         try:
