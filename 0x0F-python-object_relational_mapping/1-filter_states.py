@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Filter states by name starting with N"""
 import MySQLdb
+from sys import argv
 
 
 def filter_states(usr, pw, db):
@@ -29,12 +30,12 @@ def filter_states(usr, pw, db):
         rows = cur.fetchall()
         for row in rows:
             print(row)
-    except MySQLdb.Error:
+    except MySQLdb.Error as e:
         pass
-        # try:
-        #     print("MySQL Error [{}]: {}".format(e.args[0], e.args[1]))
-        # except IndexError:
-        #     print("MySQL Error: {}".format(e))
+        try:
+            print("MySQL Error [{}]: {}".format(e.args[0], e.args[1]))
+        except IndexError:
+            print("MySQL Error: {}".format(e))
     # close the cursor object
     cur.close()
     # close the database connection
@@ -46,7 +47,6 @@ def main(*args):
     if len(args) == 3:
         filter_states(args[0], args[1], args[2])
         return
-    from sys import argv
     if len(argv) == 4:
         filter_states(argv[1], argv[2], argv[3])
     # else:
