@@ -25,7 +25,7 @@ def select_cities(usr, pw, db, name):
     try:
         query = """SELECT cities.name FROM cities
         JOIN states ON cities.state_id = states.id
-        WHERE BINARY states.name = %s
+        WHERE states.name = %s
         ORDER BY cities.id ASC"""
         cur.execute(query, (name,))
         # Fetch all the rows in a list of lists.
