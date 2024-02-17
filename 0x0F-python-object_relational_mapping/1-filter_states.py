@@ -29,11 +29,12 @@ def filter_states(usr, pw, db):
         rows = cur.fetchall()
         for row in rows:
             print(row)
-    except MySQLdb.Error as e:
-        try:
-            print("MySQL Error [{}]: {}".format(e.args[0], e.args[1]))
-        except IndexError:
-            print("MySQL Error: {}".format(e))
+    except MySQLdb.Error:
+        pass
+        # try:
+        #     print("MySQL Error [{}]: {}".format(e.args[0], e.args[1]))
+        # except IndexError:
+        #     print("MySQL Error: {}".format(e))
     # close the cursor object
     cur.close()
     # close the database connection
