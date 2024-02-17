@@ -23,9 +23,11 @@ def select_cities(usr, pw, db, name):
     cur = db.cursor()
     # execute SQL query using execute() method.
     try:
-        query = """SELECT cities.name FROM cities
-        JOIN states ON cities.state_id = states.id
-        WHERE states.name = %s
+        query = """SELECT name FROM cities
+        WHERE state_id = (
+            SELECT id FROM states
+            WHERE BINARY name = %s
+            )
         ORDER BY cities.id ASC"""
         cur.execute(query, (name,))
         # Fetch all the rows in a list of lists.
