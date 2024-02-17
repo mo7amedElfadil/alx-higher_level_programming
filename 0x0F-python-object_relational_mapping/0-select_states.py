@@ -38,6 +38,7 @@ def select_states(usr, pw, db):
     # close the database connection
     db.close()
 
+
 def main(*args):
     """Main function"""
     if len(args) == 3:
@@ -46,7 +47,9 @@ def main(*args):
     from sys import argv
     if len(argv) == 4:
         select_states(argv[1], argv[2], argv[3])
-    else:
-        print("Usage: username password database")
+    # else:
+        # print("Usage: username password database")
+
+
 if __name__ == "__main__":
     main()

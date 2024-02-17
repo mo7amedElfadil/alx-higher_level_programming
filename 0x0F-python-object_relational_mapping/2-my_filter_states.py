@@ -2,6 +2,7 @@
 """Filter states by user input"""
 import MySQLdb
 
+
 def filter_states(usr, pw, db, name):
     """Filter states by user input
     Args:
@@ -24,7 +25,8 @@ def filter_states(usr, pw, db, name):
     try:
         # query with the name of the state to filter
         # alternative:
-        # query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(name)
+        # query =
+        # "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(name)
         query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
         # execute the query passing the name as a parameter
         cur.execute(query, (name, ))
@@ -42,6 +44,7 @@ def filter_states(usr, pw, db, name):
     # close the database connection
     db.close()
 
+
 def main(*args):
     """Main function"""
     if len(args) == 4:
@@ -50,7 +53,9 @@ def main(*args):
     from sys import argv
     if len(argv) == 5:
         filter_states(argv[1], argv[2], argv[3], argv[4])
-    else:
-        print("Usage: username password database state_name")
+    # else:
+        # print("Usage: username password database state_name")
+
+
 if __name__ == "__main__":
     main()

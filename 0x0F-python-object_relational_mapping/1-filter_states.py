@@ -2,6 +2,7 @@
 """Filter states by name starting with N"""
 import MySQLdb
 
+
 def filter_states(usr, pw, db):
     """Filter states by user input
     Args:
@@ -22,7 +23,8 @@ def filter_states(usr, pw, db):
     cur = db.cursor()
     # execute SQL query using execute() method.
     try:
-        cur.execute("""SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC""")
+        query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
+        cur.execute(query)
         # Fetch all the rows in a list of lists.
         rows = cur.fetchall()
         for row in rows:
@@ -37,6 +39,7 @@ def filter_states(usr, pw, db):
     # close the database connection
     db.close()
 
+
 def main(*args):
     """Main function"""
     if len(args) == 3:
@@ -45,7 +48,9 @@ def main(*args):
     from sys import argv
     if len(argv) == 4:
         filter_states(argv[1], argv[2], argv[3])
-    else:
-        print("Usage: username password database")
+    # else:
+        # print("Usage: username password database")
+
+
 if __name__ == "__main__":
     main()
