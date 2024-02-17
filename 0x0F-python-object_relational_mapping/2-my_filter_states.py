@@ -27,7 +27,7 @@ def filter_states(usr, pw, db, name):
         # alternative:
         # query =
         # "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(name)
-        query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+        query = "SELECT * FROM states WHERE BINARY name = %s ORDER BY id ASC"
         # execute the query passing the name as a parameter
         cur.execute(query, (name, ))
         # Fetch all the rows in a list of lists.

@@ -24,7 +24,7 @@ def filter_states(usr, pw, db):
     cur = db.cursor()
     # execute SQL query using execute() method.
     try:
-        query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
+        query = "SELECT * FROM states WHERE BINARY name LIKE 'N%' ORDER BY id ASC"
         cur.execute(query)
         # Fetch all the rows in a list of lists.
         rows = cur.fetchall()
