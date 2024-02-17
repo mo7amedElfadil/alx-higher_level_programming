@@ -28,7 +28,7 @@ def select_cities(usr, pw, db, name):
             SELECT id FROM states
             WHERE BINARY name = %s
             )
-        ORDER BY cities.id ASC"""
+        ORDER BY id ASC"""
         cur.execute(query, (name,))
         # Fetch all the rows in a list of lists.
         rows = cur.fetchall()
