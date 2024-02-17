@@ -24,13 +24,14 @@ def select_cities(usr, pw, db, name):
     # execute SQL query using execute() method.
     try:
         query = """SELECT cities.id, cities.name, states.name FROM cities
-        JOIN states ON cities.state_id = states.id WHERE BINARY states.name = %s
+        JOIN states ON cities.state_id = states.id
+        WHERE BINARY states.name = %s
         ORDER BY cities.id ASC"""
         cur.execute(query, (name,))
         # Fetch all the rows in a list of lists.
         rows = cur.fetchall()
         for row in rows:
-            print(row[1], end=(", ","\n")[row == rows[-1]])
+            print(row[1], end=(", ", "\n")[row == rows[-1]])
 
     except MySQLdb.Error as e:
         try:
