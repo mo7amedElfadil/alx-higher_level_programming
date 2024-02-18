@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """Module for model_city.py"""
 from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
-from model_state import Base, State
+from relationship_state import Base
 
 
 class City(Base):
@@ -11,7 +10,7 @@ class City(Base):
         Base (declarative_base): Base class
     Attributes:
         __tablename__ (str): Name of the table
-        id (int): id of the state
+        id (int): id of the City
         name (str): name of the state
         state_id (int): id of the state
     """
