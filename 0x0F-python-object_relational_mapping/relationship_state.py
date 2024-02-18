@@ -22,4 +22,5 @@ class State(Base):
     name = Column(String(128), nullable=False)
     # set the relationship with the City class and cascade delete the cities
     # when the state is deleted
-    cities = relationship("City", backref="state", cascade="all, delete-orphan")
+    cities = relationship("City", backref="state",
+                          cascade="all, delete-orphan")

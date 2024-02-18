@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Module to fetch all cities from the database hbtn_0e_6_usa
 """
-from re import T
-from model_city import State, Base, City
+from model_state import Base, State
+from model_city import City
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sys import argv
