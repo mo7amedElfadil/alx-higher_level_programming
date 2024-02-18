@@ -1,5 +1,6 @@
 *
 !/*.py
+!/*.sql
 !/.gitignore
 !/README.md
 !/LICENSE
