@@ -1,0 +1,9 @@
+*
+!/*.py
+!/*.sh
+!/.gitignore
+!/README.md
+!/LICENSE
+!/main_files/
+!/main_files/*
+*main.py
