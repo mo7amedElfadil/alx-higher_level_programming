@@ -3,12 +3,15 @@
 
 
 def find_peak(list_of_integers):
-    """finds the peak in a list of unsorted integers
-    """
-    if not list_of_integers:
-        return None
-    peak = list_of_integers[0]
-    for i in list_of_integers[1:]:
-        if i > peak:
-            peak = i
-    return peak
+    """def doc"""
+    lst = list_of_integers
+    if lst:
+        lf = 0
+        r = len(lst) - 1
+        while lf < r:
+            m = (lf + r) // 2
+            if lst[m] > lst[m + 1]:
+                r = m
+            else:
+                lf = m + 1
+        return lst[lf]
