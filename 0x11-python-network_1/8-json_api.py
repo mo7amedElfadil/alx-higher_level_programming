@@ -8,8 +8,9 @@ from sys import argv
 def main(letter):
     """Function that sends a POST request with a letter as a parameter."""
     url = "http://0.0.0.0:5000/search_user"
+    data = {'q': letter}
     try:
-        with requests.post(url, data={'q': letter}) as response:
+        with requests.post(url, data=data) as response:
             if response.json():
                 print("[{}] {}".format(response.json().get('id'),
                                        response.json().get('name')))
