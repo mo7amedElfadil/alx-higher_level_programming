@@ -3,4 +3,6 @@
 !/.gitignore
 !/README.md
 !/LICENSE
-*main.py
+!/main_files/
+!/main_files/*
+
