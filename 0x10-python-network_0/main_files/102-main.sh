@@ -20,4 +20,4 @@ echo ""
 # curl -sL -X PUT -H "text/html" 0.0.0.0:5000/catch_me ## gets the user id
 # curl -v -L -sX PUT -H "Content-Type: application/json" -d '{"username": "val"}' 0.0.0.0:5000/catch_me
 # curl -sLX PUT -d "user_id=98"  "0.0.0.0:5000/catch_me"
-# curl -sLX PUT -H "Origin:UserName" -d "user_id=98"  "0.0.0.0:5000/catch_me"
+# curl -sLX PUT -d  "user_id=98" -H "Origin: School" -e 0.0.0.0:5000/catch_me 0.0.0.0:5000/catch_me_2
