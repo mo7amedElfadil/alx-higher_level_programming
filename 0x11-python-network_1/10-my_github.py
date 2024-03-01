@@ -3,14 +3,14 @@
 and uses the GitHub API to display your id"""
 import requests
 from sys import argv
-from requests.auth import HTTPBasicAuth
 
 
-def main(username, password):
+def main(_, token):
     """Main function"""
     url = 'https://api.github.com/user'
-    response = requests.get(url, auth=HTTPBasicAuth(username, password))
-    print(response.json().get('id'))
+    headers = {'Authorization': f'Bearer {token}'}
+    with requests.get(url, headers=headers) as response:
+        print(response.json().get('id'))
 
 
 if __name__ == '__main__':
