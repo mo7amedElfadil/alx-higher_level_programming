@@ -6,6 +6,9 @@ request(`${process.argv[2]}`, (error, response, body) => {
   if (error) {
     console.error(error);
   } else {
+    if (response.statusCode !== 200) {
+      process.exit(1);
+    }
     const data = JSON.parse(body);
     let apps = 0;
     data.results.forEach(movie => {
