@@ -1,0 +1,7 @@
+{
+   "extends": ["semistandard", "standard-jsx"],
+  "globals": {
+    "$": true
+	}
+
+}
